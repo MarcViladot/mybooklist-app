@@ -1,0 +1,25 @@
+<mat-toolbar color="primary">
+  <mat-toolbar-row>
+    <span class="title cursor"><b>MyBookList</b></span>
+    <div fxFlex></div>
+    <div class="button-row" *ngIf="!logged">
+      <button mat-raised-button (click)="openDialogSignIn()">Sign in</button>
+      <button mat-raised-button>Sign up</button>
+    </div>
+    <div class="button-row" *ngIf="logged">
+      <div class="d-inline-block" ngbDropdown #myDrop="ngbDropdown">
+        <button class="btn dropdown no-style" ngbDropdownToggle>
+          <button class="no-style">
+            <span>{{currentUser?.username}}</span>
+          </button>
+        </button>
+        <div ngbDropdownMenu class="items">
+          <!--<button class="dropdown-item" (click)="myDrop.close();">Logout</button>-->
+          <button class="dropdown-item" (click)="signOut();"><i class="fa fa-fw fa-sign-out" aria-hidden="true"></i>Logout
+          </button>
+        </div>
+      </div>
+      <img class="user-avatar" src={{currentUser?.avatar}}/>
+    </div>
+  </mat-toolbar-row>
+</mat-toolbar>

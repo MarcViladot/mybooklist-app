@@ -1,0 +1,12 @@
+.full-width {
+  width: 100%;
+}
+
+.link {
+  color: #242424;
+  display: inline;
+}
+
+.link:hover{
+  color: #3F51B5;
+}

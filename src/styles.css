@@ -1,4 +1,28 @@
 /* You can add global styles to this file, and also import other style files */
+@import "~flag-icon-css/css/flag-icon.css";
 
-html, body { height: 100%; }
-body { margin: 0; font-family: 'Roboto', sans-serif; }
+html, body {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: 'Roboto', sans-serif;
+}
+
+@font-face {
+  font-family: "Poiret One";
+  src: url('assets/fonts/Poiret_One/PoiretOne-Regular.eot');
+  src: url('assets/fonts/Poiret_One/PoiretOne-Regular.woff') format('woff'),
+      url('assets/fonts/Poiret_One/PoiretOne-Regular.ttf')  format('truetype'),
+      url('assets/fonts/Poiret_One/PoiretOne-Regular.svg') format('svg');
+}
+
+
+.button-row button{
+  margin-left: 5px;
+}
+
+.cursor:hover {
+  cursor: pointer;
+}
