@@ -9,10 +9,12 @@ export interface Book {
   plot:string;
   lang:string;
   pages:number;
+  score:number;
+  popularity:number;
   form:string;
   cover:string;
-  authors:Array<Author>;
-  genres:Array<Genre>;
+  authors:Author[];
+  genres:Genre[];
   serie:Serie;
 
 }

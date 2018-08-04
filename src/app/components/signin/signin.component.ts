@@ -24,8 +24,8 @@ export class SigninComponent implements OnInit {
     });
   }
 
-  ngOnInit() {
-  }
+  ngOnInit() {}
+
 
   signIn(): void {
     const email = this.signinForm.get('email').value;

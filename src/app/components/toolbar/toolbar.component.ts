@@ -22,7 +22,7 @@ export class ToolbarComponent implements OnInit {
 
   ngOnInit() {
     this.logged = AuthenticationService.isLogged();
-
+    console.log(AuthenticationService.getCurrentUser());
   }
 
   signOut(): void {

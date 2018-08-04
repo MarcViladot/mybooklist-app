@@ -15,6 +15,7 @@ import { MatToolbarModule, MatButtonModule, MatIconModule, MatDialogModule, MatI
 
 import { ToolbarComponent } from './components/toolbar/toolbar.component';
 import { HomeComponent } from './components/home/home.component';
+import { BooksDisplayComponent} from "./components/books/books-display/books-display.component";
 
 // Services
 import {BookService} from "./services/book.service";
@@ -29,7 +30,8 @@ import {AuthenticationService} from "./services/authentication.service";
     ToolbarComponent,
     HomeComponent,
     SigninComponent,
-    SignupComponent
+    SignupComponent,
+    BooksDisplayComponent
   ],
   imports: [
     BrowserModule,
