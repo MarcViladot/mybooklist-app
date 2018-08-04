@@ -1,7 +1,12 @@
 <mat-toolbar color="primary">
   <mat-toolbar-row>
     <span class="title cursor"><b>MyBookList</b></span>
+
     <div fxFlex></div>
+
+    <input class="form-control search-bar" placeholder="Search Book">
+
+    <!-- USER PART -->
     <div class="button-row" *ngIf="!logged">
       <button mat-raised-button (click)="openDialogSignIn()">Sign in</button>
       <button mat-raised-button>Sign up</button>

@@ -18,5 +18,9 @@
 }
 
 .no-style img {
-  margin-left: 5;
+  margin-left: 5px;
+}
+
+.search-bar {
+ width: 300px;
 }

@@ -1,6 +1,6 @@
 import {ChangeDetectorRef, Component, OnInit} from '@angular/core';
 import {MatDialog} from "@angular/material";
-import {SigninComponent} from "../signin/signin.component";
+import {SigninComponent} from "../user/signin/signin.component";
 import {AuthenticationService} from "../../services/authentication.service";
 import {User} from "../../interfaces/user";
 
@@ -11,7 +11,7 @@ import {User} from "../../interfaces/user";
 })
 export class ToolbarComponent implements OnInit {
 
-  logged:boolean;
+  logged: boolean;
   currentUser: User;
 
   constructor(public dialog: MatDialog,
@@ -22,7 +22,6 @@ export class ToolbarComponent implements OnInit {
 
   ngOnInit() {
     this.logged = AuthenticationService.isLogged();
-    console.log(AuthenticationService.getCurrentUser());
   }
 
   signOut(): void {

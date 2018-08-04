@@ -1,9 +1,9 @@
 import {EventEmitter, Injectable, Output} from '@angular/core';
-import {Observable, throwError} from "rxjs";
-import {User} from "../interfaces/user";
-import {HttpClient, HttpHeaders} from "@angular/common/http";
-import {catchError} from "rxjs/operators";
-import {Book} from "../interfaces/book";
+import {Observable, throwError} from 'rxjs';
+import {User} from '../interfaces/user';
+import {HttpClient, HttpHeaders} from '@angular/common/http';
+import {catchError} from 'rxjs/operators';
+import {Book} from '../interfaces/book';
 
 
 @Injectable({
@@ -19,13 +19,14 @@ export class BookService {
 
   handleError = (error: Response) => {
     return throwError(error);
-  };
+  }
 
-  getAllBooks(): Observable<Book[]> {
-    return this.http.get<Book[]>(this.url)
-      .pipe(
-      catchError(this.handleError)
-    );
+  getAllBooks(): Observable<any> {
+    return this.http.get<any>(this.url, {
+      headers: new HttpHeaders({
+        'Accept': 'application/json'
+      })
+    });
   }
 
   getLatestBooks(): Observable<Book[]> {
@@ -36,14 +37,13 @@ export class BookService {
   }
 
     sortArray(array: Book[], sorting: string) {
-        //RATING, NEWEST, ABC
         const sortedArray: Book[] = array.sort((n1, n2) => {
             switch (sorting) {
                 case 'rating': {
                     return n2.score - n1.score;
                 }
                 case 'date': {
-                    return n1.year - n2.year
+                    return n1.year - n2.year;
                 }
                 case 'abc': {
                     if (n1.name > n2.name) {

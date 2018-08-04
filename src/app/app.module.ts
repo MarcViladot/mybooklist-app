@@ -11,7 +11,7 @@ import { HttpClientModule } from '@angular/common/http';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import {LayoutModule} from '@angular/cdk/layout';
 import { FlexLayoutModule } from '@angular/flex-layout';
-import { MatToolbarModule, MatButtonModule, MatIconModule, MatDialogModule, MatInputModule, MatFormFieldModule} from '@angular/material';
+import { MatToolbarModule, MatButtonModule, MatIconModule, MatDialogModule, MatInputModule, MatFormFieldModule, MatCardModule, MatChipsModule} from '@angular/material';
 
 import { ToolbarComponent } from './components/toolbar/toolbar.component';
 import { HomeComponent } from './components/home/home.component';
@@ -19,9 +19,11 @@ import { BooksDisplayComponent} from "./components/books/books-display/books-dis
 
 // Services
 import {BookService} from "./services/book.service";
-import { SigninComponent } from './components/signin/signin.component';
+import { SigninComponent } from './components/user/signin/signin.component';
 import { SignupComponent } from './signup/signup.component';
 import {AuthenticationService} from "./services/authentication.service";
+import {ReviewService} from './services/review.service';
+import { BookItemComponent } from './components/books/book-item/book-item.component';
 
 
 @NgModule({
@@ -31,7 +33,8 @@ import {AuthenticationService} from "./services/authentication.service";
     HomeComponent,
     SigninComponent,
     SignupComponent,
-    BooksDisplayComponent
+    BooksDisplayComponent,
+    BookItemComponent
   ],
   imports: [
     BrowserModule,
@@ -51,13 +54,15 @@ import {AuthenticationService} from "./services/authentication.service";
     MatIconModule,
     MatDialogModule,
     MatInputModule,
-    MatFormFieldModule
+    MatFormFieldModule,
+    MatCardModule,
+    MatChipsModule
   ],
   entryComponents: [
     SigninComponent,
     SignupComponent
   ],
-  providers: [BookService, AuthenticationService],
+  providers: [BookService, AuthenticationService, ReviewService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

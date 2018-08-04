@@ -1,6 +1,6 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {Book} from "../../../interfaces/book";
-import {BookService} from "../../../services/book.service";
+import {Book} from '../../../interfaces/book';
+import {BookService} from '../../../services/book.service';
 
 @Component({
     selector: 'app-books-display',
@@ -11,7 +11,7 @@ export class BooksDisplayComponent implements OnInit {
 
     @Input() books: Book[];
 
-    selectedSorting: string = '';
+    selectedSorting = '';
 
     sortings = [
         {value: 'abc', viewValue: 'Title'},

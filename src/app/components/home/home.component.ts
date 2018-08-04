@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import {Book} from "../../interfaces/book";
 import {BookService} from "../../services/book.service";
+import {Review} from '../../interfaces/review';
+import {ReviewService} from '../../services/review.service';
 
 @Component({
   selector: 'app-home',
@@ -9,14 +11,19 @@ import {BookService} from "../../services/book.service";
 })
 export class HomeComponent implements OnInit {
 
-  books: Array<Book>;
+  books: Book[];
+  reviews: Review[];
 
-  constructor(private bookService: BookService) { }
+  constructor(private bookService: BookService,
+              private reviewService: ReviewService) { }
 
   ngOnInit() {
-    this.bookService.getLatestBooks().subscribe(
-      books => this.books = books
-    )
+    this.bookService.getAllBooks().subscribe(
+      response => this.books = response.books
+    );
+    this.reviewService.getLatestReviews().subscribe(
+      reviews => this.reviews = reviews
+    );
   }
 
 }
