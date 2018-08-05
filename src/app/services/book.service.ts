@@ -12,6 +12,7 @@ import {Book} from '../interfaces/book';
 export class BookService {
 
   url = 'http://localhost:3000/api/v1/books/';
+  urls = 'http://localhost:3000/api/v1/books/show/search/the';
 
   @Output() arraySorted: EventEmitter<Book[]> = new EventEmitter();
 
@@ -23,6 +24,14 @@ export class BookService {
 
   getAllBooks(): Observable<any> {
     return this.http.get<any>(this.url, {
+      headers: new HttpHeaders({
+        'Accept': 'application/json'
+      })
+    });
+  }
+
+  getBooksSearch(search: string): Observable<any> {
+    return this.http.get<any>(this.url + 'show/search/' + search, {
       headers: new HttpHeaders({
         'Accept': 'application/json'
       })

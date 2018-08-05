@@ -18,8 +18,8 @@ export class HomeComponent implements OnInit {
               private reviewService: ReviewService) { }
 
   ngOnInit() {
-    this.bookService.getAllBooks().subscribe(
-      response => this.books = response.books
+    this.bookService.getLatestBooks().subscribe(
+      books => this.books = books
     );
     this.reviewService.getLatestReviews().subscribe(
       reviews => this.reviews = reviews

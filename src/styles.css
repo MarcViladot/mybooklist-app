@@ -26,3 +26,11 @@ body {
 .cursor:hover {
   cursor: pointer;
 }
+
+.break {
+  flex-grow: 1;
+  display: flex;
+  justify-content: flex-start;
+  flex-wrap: wrap;
+  align-content: flex-start;
+}

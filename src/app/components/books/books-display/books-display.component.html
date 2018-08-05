@@ -1,23 +1,29 @@
 <div fxLayout="row">
-    <b>DISPLAY</b>
-    <span fxFlex></span>
-    <div>
+  <b>DISPLAY</b>
+  <span fxFlex></span>
+  <div>
 
-        <div ngbDropdown #myDrop="ngbDropdown" class="d-inline-block" style="margin-right: 50px">
-            <button class="btn dropdown" ngbDropdownToggle>Sort by: {{selectedSorting}}
-            </button>
-            <div ngbDropdownMenu aria-labelledby="dropdownBasic1" class="items">
-                <button class="dropdown-item" *ngFor="let sorting of sortings"
-                        (click)="sortBooks(sorting.value, sorting.viewValue); myDrop.close();">
-                    {{sorting.viewValue}}
-                </button>
-            </div>
-        </div>
-
+    <div ngbDropdown #myDrop="ngbDropdown" class="d-inline-block" style="margin-right: 50px">
+      <button class="btn dropdown" ngbDropdownToggle>Sort by: {{selectedSorting}}
+      </button>
+      <div ngbDropdownMenu aria-labelledby="dropdownBasic1" class="items">
+        <button class="dropdown-item" *ngFor="let sorting of sortings"
+                (click)="sortBooks(sorting.value, sorting.viewValue); myDrop.close();">
+          {{sorting.viewValue}}
+        </button>
+      </div>
     </div>
+
+  </div>
+</div><br>
+
+<div class="break">
+  <div *ngFor="let book of books" style="margin: 5px">
+    <app-book-item [book]="book"></app-book-item>
+  </div>
 </div>
 
-<div *ngFor="let book of books">
-    <span>{{book.name}}</span>
-</div>
+
+
+
 

@@ -4,7 +4,9 @@
 
     <div fxFlex></div>
 
-    <input class="form-control search-bar" placeholder="Search Book">
+    <form (ngSubmit)="search(searchInput.value)">
+      <input class="form-control search-bar" placeholder="Search Book" #searchInput>
+    </form>
 
     <!-- USER PART -->
     <div class="button-row" *ngIf="!logged">

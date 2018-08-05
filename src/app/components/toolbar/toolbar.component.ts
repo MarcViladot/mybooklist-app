@@ -3,6 +3,7 @@ import {MatDialog} from "@angular/material";
 import {SigninComponent} from "../user/signin/signin.component";
 import {AuthenticationService} from "../../services/authentication.service";
 import {User} from "../../interfaces/user";
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-toolbar',
@@ -15,7 +16,8 @@ export class ToolbarComponent implements OnInit {
   currentUser: User;
 
   constructor(public dialog: MatDialog,
-              private authService: AuthenticationService) {
+              private authService: AuthenticationService,
+              private router: Router) {
     this.currentUser = AuthenticationService.getCurrentUser();
     this.authService.getLoggedIn.subscribe(bool => {this.logged = bool});
   }
@@ -36,5 +38,9 @@ export class ToolbarComponent implements OnInit {
     dialogRef.afterClosed().subscribe(response => {
       dialogRef = null;
     });
+  }
+
+  search(search: string): void {
+    this.router.navigate(['/search/' + search]);
   }
 }

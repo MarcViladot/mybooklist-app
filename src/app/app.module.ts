@@ -1,31 +1,34 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { ROUTES } from "./app.routes";
+import { ROUTES } from './app.routes';
 
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { PreloadAllModules, RouterModule} from "@angular/router";
+import { PreloadAllModules, RouterModule} from '@angular/router';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import {LayoutModule} from '@angular/cdk/layout';
 import { FlexLayoutModule } from '@angular/flex-layout';
-import { MatToolbarModule, MatButtonModule, MatIconModule, MatDialogModule, MatInputModule, MatFormFieldModule, MatCardModule, MatChipsModule} from '@angular/material';
+import { MatToolbarModule, MatButtonModule, MatIconModule, MatDialogModule, MatInputModule, MatFormFieldModule, MatCardModule,
+  MatChipsModule} from '@angular/material';
 
 import { ToolbarComponent } from './components/toolbar/toolbar.component';
 import { HomeComponent } from './components/home/home.component';
-import { BooksDisplayComponent} from "./components/books/books-display/books-display.component";
+import { BooksDisplayComponent} from './components/books/books-display/books-display.component';
 
 import { DragScrollModule } from 'ngx-drag-scroll';
 
 // Services
-import {BookService} from "./services/book.service";
+import {BookService} from './services/book.service';
 import { SigninComponent } from './components/user/signin/signin.component';
 import { SignupComponent } from './signup/signup.component';
-import {AuthenticationService} from "./services/authentication.service";
+import {AuthenticationService} from './services/authentication.service';
 import {ReviewService} from './services/review.service';
 import { BookItemComponent } from './components/books/book-item/book-item.component';
+import { BookSearchComponent } from './components/books/book-search/book-search.component';
+
 
 
 @NgModule({
@@ -36,7 +39,8 @@ import { BookItemComponent } from './components/books/book-item/book-item.compon
     SigninComponent,
     SignupComponent,
     BooksDisplayComponent,
-    BookItemComponent
+    BookItemComponent,
+    BookSearchComponent
   ],
   imports: [
     BrowserModule,

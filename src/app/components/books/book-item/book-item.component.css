@@ -34,3 +34,8 @@
   height: 240px;
   padding-top: 5px;
 }
+
+.book-cover:hover {
+  opacity: .8;
+  cursor: pointer;
+}
