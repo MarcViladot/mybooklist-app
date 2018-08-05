@@ -17,6 +17,8 @@ import { ToolbarComponent } from './components/toolbar/toolbar.component';
 import { HomeComponent } from './components/home/home.component';
 import { BooksDisplayComponent} from "./components/books/books-display/books-display.component";
 
+import { DragScrollModule } from 'ngx-drag-scroll';
+
 // Services
 import {BookService} from "./services/book.service";
 import { SigninComponent } from './components/user/signin/signin.component';
@@ -43,6 +45,7 @@ import { BookItemComponent } from './components/books/book-item/book-item.compon
     FlexLayoutModule,
     HttpClientModule,
     FormsModule,
+    DragScrollModule,
     ReactiveFormsModule,
     RouterModule.forRoot(ROUTES, {
       useHash: Boolean(history.pushState) === false,

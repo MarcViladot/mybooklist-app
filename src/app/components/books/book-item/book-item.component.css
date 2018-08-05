@@ -1,0 +1,36 @@
+.book-card {
+  padding:0 !important;
+  width: 325px;
+  height: 325px;
+}
+
+.header {
+  padding: 5px;
+}
+
+.book-content {
+  font-size: 0.75em;
+}
+
+.cursor:hover {
+  color: #3F51B5;
+}
+
+.book-genres {
+  font-size: 0.65em;
+  padding: 5px;
+}
+
+.book-plot {
+  max-width: 50%;
+  font-size: 0.80em;
+  overflow-y: scroll;
+  height: 240px;
+  padding: 5px 5px 0;
+}
+
+.book-cover {
+  width: 50%;
+  height: 240px;
+  padding-top: 5px;
+}
