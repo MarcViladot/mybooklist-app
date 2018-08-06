@@ -34,3 +34,8 @@ body {
   flex-wrap: wrap;
   align-content: flex-start;
 }
+
+.button-col button {
+  width: 100%;
+  margin-bottom: 5px;
+}

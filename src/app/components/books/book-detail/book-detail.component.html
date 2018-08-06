@@ -1,0 +1,27 @@
+<h4 style="padding-bottom: 5px">{{book?.name}}</h4>
+<div class="row">
+
+  <div class="col-lg-2 d col">
+
+    <img src={{book?.cover}} class="cover"/>
+    <div class="button-col">
+      <button mat-raised-button *ngIf="!isInUserList" color="primary" class="add-button" (click)="addToList()">Add to my list</button>
+      <div *ngIf="isInUserList">{{added.progress}}</div>
+      <button mat-raised-button color="warn" class="add-button" (click)="addToFavourites()">Add to favourites</button>
+    </div>
+
+  </div>
+
+
+  <div class="col-lg-10 d col">
+
+    <mat-tab-group>
+      <mat-tab label="Details"> Content 1</mat-tab>
+      <mat-tab label="Reviews"> Content 2</mat-tab>
+      <mat-tab label="Stats"> Content 3</mat-tab>
+      <mat-tab label="Recommendations"> Content 4</mat-tab>
+    </mat-tab-group>
+
+
+  </div>
+</div>

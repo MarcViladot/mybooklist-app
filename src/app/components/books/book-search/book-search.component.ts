@@ -30,7 +30,6 @@ export class BookSearchComponent implements OnInit {
     this.bookService.getBooksSearch(this.search).subscribe(
       response => {
         this.books = response.books;
-        console.log(response.books);
       });
   }
 

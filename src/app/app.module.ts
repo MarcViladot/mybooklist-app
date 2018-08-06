@@ -12,7 +12,7 @@ import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import {LayoutModule} from '@angular/cdk/layout';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { MatToolbarModule, MatButtonModule, MatIconModule, MatDialogModule, MatInputModule, MatFormFieldModule, MatCardModule,
-  MatChipsModule} from '@angular/material';
+  MatChipsModule, MatTabsModule} from '@angular/material';
 
 import { ToolbarComponent } from './components/toolbar/toolbar.component';
 import { HomeComponent } from './components/home/home.component';
@@ -28,6 +28,8 @@ import {AuthenticationService} from './services/authentication.service';
 import {ReviewService} from './services/review.service';
 import { BookItemComponent } from './components/books/book-item/book-item.component';
 import { BookSearchComponent } from './components/books/book-search/book-search.component';
+import { BookDetailComponent } from './components/books/book-detail/book-detail.component';
+import {ListService} from './services/list.service';
 
 
 
@@ -40,7 +42,8 @@ import { BookSearchComponent } from './components/books/book-search/book-search.
     SignupComponent,
     BooksDisplayComponent,
     BookItemComponent,
-    BookSearchComponent
+    BookSearchComponent,
+    BookDetailComponent
   ],
   imports: [
     BrowserModule,
@@ -63,13 +66,14 @@ import { BookSearchComponent } from './components/books/book-search/book-search.
     MatInputModule,
     MatFormFieldModule,
     MatCardModule,
+    MatTabsModule,
     MatChipsModule
   ],
   entryComponents: [
     SigninComponent,
     SignupComponent
   ],
-  providers: [BookService, AuthenticationService, ReviewService],
+  providers: [BookService, AuthenticationService, ReviewService, ListService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -38,6 +38,14 @@ export class BookService {
     });
   }
 
+  getBookById(id: number): Observable<Book> {
+    return this.http.get<Book>(this.url + id, {
+      headers: new HttpHeaders({
+        'Accept': 'application/json'
+      })
+    });
+  }
+
   getLatestBooks(): Observable<Book[]> {
     return this.http.get<Book[]>(this.url + 'show/latest')
       .pipe(
