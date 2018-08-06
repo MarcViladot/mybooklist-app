@@ -19,6 +19,8 @@ export class BookDetailComponent implements OnInit {
   book: Book;
   logged: boolean;
   isInUserList: boolean;
+  isFavourite: boolean;
+  favouriteId: number;
   added: Added;
 
   constructor(private activatedRoute: ActivatedRoute,
@@ -37,7 +39,19 @@ export class BookDetailComponent implements OnInit {
       book => this.book = book
     );
     this.changeLogged(AuthenticationService.isLogged());
-    this.isInUserList = this.getAdded();
+    this.getFavourite();
+  }
+
+  private getFavourite(): void {
+    if (this.logged) {
+      this.bookService.getFavByBoookAndUser(AuthenticationService.getCurrentUser().id, this.id).subscribe(
+        response => {
+          if (response !== null) {
+            this.isFavourite = response !== null;
+            this.favouriteId = response.id;
+          }
+        });
+    }
   }
 
   private getAdded(): boolean {
@@ -60,9 +74,18 @@ export class BookDetailComponent implements OnInit {
     if (!this.logged) {
       this.openDialogSignIn();
     } else {
-      // Add fav
+      this.bookService.postFavouriteBook(AuthenticationService.getCurrentUser().id, this.id).subscribe(
+        response => {
+         this.getFavourite();
+        }
+      );
     }
+  }
 
+  removeFromFavourites(): void {
+    this.bookService.deleteFavouriteBook(this.favouriteId).subscribe(
+      res => this.isFavourite = false
+    );
   }
 
   addToList(): void {

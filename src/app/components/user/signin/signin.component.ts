@@ -34,7 +34,7 @@ export class SigninComponent implements OnInit {
     this.authService.signIn(email, password).subscribe(
       response => {
           localStorage.setItem('access_token', response.auth_token);
-          this.postSignIn()
+          this.postSignIn();
       },
       error => {
         this.error = true;
@@ -45,6 +45,7 @@ export class SigninComponent implements OnInit {
   postSignIn(): void {
     this.dialogRef.close();
     this.authService.setCurrentUser();
+    window.location.reload();
   }
 
 }

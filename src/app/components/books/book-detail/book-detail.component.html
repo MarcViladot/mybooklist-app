@@ -5,9 +5,22 @@
 
     <img src={{book?.cover}} class="cover"/>
     <div class="button-col">
-      <button mat-raised-button *ngIf="!isInUserList" color="primary" class="add-button" (click)="addToList()">Add to my list</button>
-      <div *ngIf="isInUserList">{{added.progress}}</div>
-      <button mat-raised-button color="warn" class="add-button" (click)="addToFavourites()">Add to favourites</button>
+
+      <div *ngIf="isInUserList">
+        <div class="book-added">
+          <p><b>Status:</b> {{added?.status}}</p>
+          <p><b>Progress:</b> {{added?.progress}}/{{book?.pages}}</p>
+          <p><b>Score:</b> {{added?.score}}</p>
+          <button mat-stroked-button color="primary" class="full-width">Edit Details</button>
+        </div>
+      </div>
+
+      <button mat-stroked-button *ngIf="!isInUserList" color="primary" (click)="addToList()">
+        Add to my list
+      </button>
+      <button mat-stroked-button *ngIf="!isFavourite" color="warn" (click)="addToFavourites()">Add to favourites</button>
+      <button mat-stroked-button *ngIf="isFavourite" color="warn" (click)="removeFromFavourites()">Remove</button>
+
     </div>
 
   </div>

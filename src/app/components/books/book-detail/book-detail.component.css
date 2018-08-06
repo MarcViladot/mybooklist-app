@@ -8,3 +8,9 @@
   margin-bottom: 5px;
 }
 
+.book-added {
+  margin-bottom: 5px;
+}
+.book-added p{
+  margin: 5px!important;
+}

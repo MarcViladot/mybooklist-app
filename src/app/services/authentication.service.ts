@@ -42,7 +42,7 @@ export class AuthenticationService {
       );
   }
 
-  signOut(){
+  signOut() {
     localStorage.removeItem('access_token');
     sessionStorage.removeItem('userChanges');
     this.getLoggedIn.emit(false);
