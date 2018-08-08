@@ -21,8 +21,8 @@ export class HomeComponent implements OnInit {
     this.bookService.getLatestBooks().subscribe(
       books => this.books = books
     );
-    this.reviewService.getLatestReviews().subscribe(
-      reviews => this.reviews = reviews
+    this.reviewService.getReviewByBookId(1).subscribe(
+      response => this.reviews = response.reviews
     );
   }
 

@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import {HttpClient} from '@angular/common/http';
+import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {Observable, throwError} from 'rxjs';
 import {Book} from '../interfaces/book';
 import {catchError} from 'rxjs/operators';
@@ -23,5 +23,13 @@ export class ReviewService {
       .pipe(
         catchError(this.handleError)
       );
+  }
+
+  getReviewByBookId(id: number): Observable<any> {
+    return this.http.get<any>(this.url + 'book/' + id, {
+      headers: new HttpHeaders({
+        'Accept': 'application/json'
+      })
+    });
   }
 }

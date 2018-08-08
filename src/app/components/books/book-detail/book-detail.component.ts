@@ -18,7 +18,7 @@ export class BookDetailComponent implements OnInit {
   id: number;
   book: Book;
   logged: boolean;
-  isInUserList: boolean;
+  isInUserList = false;
   isFavourite: boolean;
   favouriteId: number;
   added: Added;
@@ -40,6 +40,7 @@ export class BookDetailComponent implements OnInit {
     );
     this.changeLogged(AuthenticationService.isLogged());
     this.getFavourite();
+    this.getAdded();
   }
 
   private getFavourite(): void {
@@ -47,26 +48,26 @@ export class BookDetailComponent implements OnInit {
       this.bookService.getFavByBoookAndUser(AuthenticationService.getCurrentUser().id, this.id).subscribe(
         response => {
           if (response !== null) {
-            this.isFavourite = response !== null;
+            this.isFavourite = true;
             this.favouriteId = response.id;
           }
         });
+    } else {
+      this.isFavourite = false;
     }
   }
 
-  private getAdded(): boolean {
+  private getAdded(): void {
     if (this.logged) {
       this.listService.getAddedByBoookAndUser(AuthenticationService.getCurrentUser().id, this.id).subscribe(
         response => {
-          if (response === null) {
-            this.isInUserList = false;
-          } else {
+          if (response !== null) {
             this.isInUserList = true;
             this.added = response;
           }
         });
     } else {
-      return false;
+      this.isInUserList = false;
     }
   }
 
@@ -108,6 +109,7 @@ export class BookDetailComponent implements OnInit {
 
   private changeLogged(logged: boolean) {
     this.logged = logged;
-    this.isInUserList = this.getAdded();
+    this.getAdded();
+    this.getFavourite();
   }
 }

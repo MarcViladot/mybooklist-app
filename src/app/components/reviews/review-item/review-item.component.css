@@ -1,0 +1,46 @@
+.review-card {
+  width: 90%;
+/*  height: 350px;*/
+  padding: 10px!important;
+  margin: 15px;
+}
+
+.header {
+  height: 75px;
+  width: 100%;
+  margin-bottom: 10px;
+  /*border: 1px solid #000000;*/
+}
+
+.content {
+  width: 100%;
+  font-size: 0.8em;
+}
+
+.cursor-text {
+  color: #3F51B5;
+}
+
+.cursor-text:hover {
+  cursor: pointer;
+  color: #32a7d1;
+}
+
+.d p{
+  margin-bottom: 10px;
+  font-size: 0.8em;
+}
+
+.avatar {
+  height: 100%;
+  width: auto;
+}
+
+.avatar:hover {
+  opacity: 0.8;
+  cursor: pointer;
+}
+
+.username {
+  color: #000;
+}

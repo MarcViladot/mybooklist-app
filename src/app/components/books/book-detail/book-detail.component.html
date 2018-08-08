@@ -15,11 +15,11 @@
         </div>
       </div>
 
-      <button mat-stroked-button *ngIf="!isInUserList" color="primary" (click)="addToList()">
+      <button mat-raised-button *ngIf="!isInUserList" color="primary" (click)="addToList()">
         Add to my list
       </button>
-      <button mat-stroked-button *ngIf="!isFavourite" color="warn" (click)="addToFavourites()">Add to favourites</button>
-      <button mat-stroked-button *ngIf="isFavourite" color="warn" (click)="removeFromFavourites()">Remove</button>
+      <button mat-raised-button *ngIf="!isFavourite" color="warn" (click)="addToFavourites()">Add to favourites</button>
+      <button mat-stroked-button *ngIf="isFavourite" color="warn" (click)="removeFromFavourites()">Remove from favourites</button>
 
     </div>
 
@@ -30,7 +30,13 @@
 
     <mat-tab-group>
       <mat-tab label="Details"> Content 1</mat-tab>
-      <mat-tab label="Reviews"> Content 2</mat-tab>
+      <mat-tab label="Reviews">
+        <div>
+          <div *ngFor="let review of book.reviews">
+            <app-review-item [review]="review"></app-review-item>
+          </div>
+        </div>
+      </mat-tab>
       <mat-tab label="Stats"> Content 3</mat-tab>
       <mat-tab label="Recommendations"> Content 4</mat-tab>
     </mat-tab-group>

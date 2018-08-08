@@ -30,6 +30,7 @@ import { BookItemComponent } from './components/books/book-item/book-item.compon
 import { BookSearchComponent } from './components/books/book-search/book-search.component';
 import { BookDetailComponent } from './components/books/book-detail/book-detail.component';
 import {ListService} from './services/list.service';
+import { ReviewItemComponent } from './components/reviews/review-item/review-item.component';
 
 
 
@@ -43,7 +44,8 @@ import {ListService} from './services/list.service';
     BooksDisplayComponent,
     BookItemComponent,
     BookSearchComponent,
-    BookDetailComponent
+    BookDetailComponent,
+    ReviewItemComponent
   ],
   imports: [
     BrowserModule,
