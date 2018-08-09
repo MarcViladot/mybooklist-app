@@ -41,6 +41,14 @@ export class BookService {
     });
   }
 
+  getBooksByGenre(id: number): Observable<any> {
+    return this.http.get<any>(this.url + 'genre/' + id, {
+      headers: new HttpHeaders({
+        'Accept': 'application/json'
+      })
+    });
+  }
+
   getBookById(id: number): Observable<Book> {
     return this.http.get<Book>(this.url + id, {
       headers: new HttpHeaders({

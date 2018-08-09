@@ -11,6 +11,7 @@ export interface Book {
   lang: string;
   pages: number;
   score: number;
+  members: number;
   popularity: number;
   form: string;
   cover: string;

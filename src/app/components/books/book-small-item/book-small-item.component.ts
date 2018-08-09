@@ -3,11 +3,11 @@ import {Book} from '../../../interfaces/book';
 import {Router} from '@angular/router';
 
 @Component({
-  selector: 'app-book-item',
-  templateUrl: './book-item.component.html',
-  styleUrls: ['./book-item.component.css']
+  selector: 'app-book-small-item',
+  templateUrl: './book-small-item.component.html',
+  styleUrls: ['./book-small-item.component.css']
 })
-export class BookItemComponent implements OnInit {
+export class BookSmallItemComponent implements OnInit {
 
   @Input() book: Book;
 
@@ -18,10 +18,6 @@ export class BookItemComponent implements OnInit {
 
   goToBook(id: number): void {
     this.router.navigate(['/books/' + id]);
-  }
-
-  goToGenre(id: number): void  {
-    this.router.navigate(['/genre/' + id]);
   }
 
 }

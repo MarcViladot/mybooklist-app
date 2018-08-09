@@ -43,3 +43,12 @@ body {
 .border {
   border: 1px solid #000000;
 }
+
+.cursor-text {
+  color: #3F51B5;
+}
+
+.cursor-text:hover {
+  cursor: pointer;
+  color: #32a7d1;
+}

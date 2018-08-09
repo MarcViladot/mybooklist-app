@@ -1,19 +1,19 @@
 <mat-card class="review-card">
   <div class="header" fxLayout="row">
-    <div>
+    <div align="left">
       <img src={{review.user.avatar}} class="avatar"/>
       <b class="cursor-text username"> {{review.user.username}}</b>
     </div>
     <div fxFlex></div>
     <div class="d" align="right">
       <p>{{review.created_at | date: 'mediumDate'}}</p>
-      <p>Rated: {{review.score}}</p>
+      <p>Rated: {{review.score}} <i class="fa fa-star" aria-hidden="true"></i></p>
     </div>
 
   </div>
 
   <div class="content">
-    <div>
+    <div align="left">
       <span *ngIf="!showMore" [innerHTML]="textSplit"></span>
       <span *ngIf="showMore" [innerHTML]="review.text"></span>
       <span *ngIf="!showMore" class="cursor-text" (click)="changeText(true)"> show more...</span>

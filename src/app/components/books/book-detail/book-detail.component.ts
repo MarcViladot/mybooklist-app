@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {ActivatedRoute} from '@angular/router';
+import {ActivatedRoute, Router} from '@angular/router';
 import {BookService} from '../../../services/book.service';
 import {Book} from '../../../interfaces/book';
 import {AuthenticationService} from '../../../services/authentication.service';
@@ -27,7 +27,11 @@ export class BookDetailComponent implements OnInit {
               private bookService: BookService,
               private authService: AuthenticationService,
               private listService: ListService,
-              public dialog: MatDialog) {
+              public dialog: MatDialog,
+              private router: Router) {
+    this.router.routeReuseStrategy.shouldReuseRoute = function () {
+      return false;
+    };
     this.activatedRoute.paramMap.subscribe(params => {
       this.id = +params.get('id');
     });
@@ -105,6 +109,10 @@ export class BookDetailComponent implements OnInit {
     dialogRef.afterClosed().subscribe(response => {
       dialogRef = null;
     });
+  }
+
+  goToGenre(id: number): void  {
+    this.router.navigate(['/genre/' + id]);
   }
 
   private changeLogged(logged: boolean) {

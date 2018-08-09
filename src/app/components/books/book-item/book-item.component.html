@@ -18,7 +18,7 @@
 
     <div class="row book-genres">
       <div *ngFor="let genre of book.genres" style="margin:0 auto;">
-        <div class="col cursor">
+        <div class="col cursor" (click)="goToGenre(genre.id)">
           {{genre.genre}}
         </div>
       </div>

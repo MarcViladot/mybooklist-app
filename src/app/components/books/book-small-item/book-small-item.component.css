@@ -1,0 +1,10 @@
+.cover:hover {
+  opacity: .8;
+  cursor: pointer;
+}
+
+.cover {
+  height: 75%;
+  margin-right: 5px;
+  border-radius: 5px;
+}

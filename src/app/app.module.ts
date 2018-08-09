@@ -31,6 +31,9 @@ import { BookSearchComponent } from './components/books/book-search/book-search.
 import { BookDetailComponent } from './components/books/book-detail/book-detail.component';
 import {ListService} from './services/list.service';
 import { ReviewItemComponent } from './components/reviews/review-item/review-item.component';
+import {NgxPaginationModule} from 'ngx-pagination';
+import { GenreSearchComponent } from './components/genre-search/genre-search.component';
+import { BookSmallItemComponent } from './components/books/book-small-item/book-small-item.component';
 
 
 
@@ -45,7 +48,9 @@ import { ReviewItemComponent } from './components/reviews/review-item/review-ite
     BookItemComponent,
     BookSearchComponent,
     BookDetailComponent,
-    ReviewItemComponent
+    ReviewItemComponent,
+    GenreSearchComponent,
+    BookSmallItemComponent
   ],
   imports: [
     BrowserModule,
@@ -55,6 +60,7 @@ import { ReviewItemComponent } from './components/reviews/review-item/review-ite
     HttpClientModule,
     FormsModule,
     DragScrollModule,
+    NgxPaginationModule,
     ReactiveFormsModule,
     RouterModule.forRoot(ROUTES, {
       useHash: Boolean(history.pushState) === false,
