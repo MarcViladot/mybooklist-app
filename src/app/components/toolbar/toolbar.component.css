@@ -24,3 +24,12 @@
 .search-bar {
  width: 300px;
 }
+
+.cover-search {
+  height: 100px;
+}
+
+.options {
+  margin: 5px;
+  height: 100px;
+}

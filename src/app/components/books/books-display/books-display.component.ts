@@ -10,6 +10,7 @@ import {BookService} from '../../../services/book.service';
 export class BooksDisplayComponent implements OnInit {
 
     @Input() books: Book[];
+    @Input() title: string;
 
     selectedSorting = '';
 

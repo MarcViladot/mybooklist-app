@@ -5,8 +5,8 @@
 
   <div class="book-content">
     <div align="center" class="row">
-      <div class="col cursor">
-        {{book.serie.name}}
+      <div class="col cursor" *ngIf="book?.serie != undefined">
+        {{book?.serie.name}}
       </div>
       <div class="col">
         {{book.pages}} Pages

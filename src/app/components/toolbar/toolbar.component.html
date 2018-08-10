@@ -6,7 +6,18 @@
 
 
     <form (ngSubmit)="search(searchInput.value)">
-      <input class="form-control search-bar" placeholder="Search Book" #searchInput>
+
+      <input class="form-control search-bar" placeholder="Search Book" #searchInput [formControl]="myControl" [matAutocomplete]="auto">
+      <mat-autocomplete #auto="matAutocomplete">
+        <mat-option *ngFor="let option of filteredOptions | async" [value]="option.name" class="options">
+          <div (click)="goToBook(option.id)">
+            <span>
+            <img src={{option.cover}} class="cover-search" />
+              {{ option.name}}
+            </span>
+          </div>
+        </mat-option>
+      </mat-autocomplete>
     </form>
 
     <!-- USER PART -->

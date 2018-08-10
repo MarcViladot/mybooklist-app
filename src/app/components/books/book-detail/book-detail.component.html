@@ -57,19 +57,42 @@
     <mat-tab-group>
       <mat-tab label="Details">
 
-        <div class="col-md-12 row details">
+        <div class="col-md-12 ">
 
-          <div class="col-md-3 bh"><h4>Authors</h4></div>
-          <div class="col-md-9 bh"  >
-            <h4>Series: {{book?.serie.name}}</h4>
-            <div dragScroll [drag-scroll-y-disabled]="true" style="height: 100%">
-            <div class="series">
+          <div class="row details">
+            <div class="col-md-4 author-series">
+              <h4>Authors</h4>
+              <div dragScroll [drag-scroll-y-disabled]="true" style="height: 100%">
+                <div class="inline">
+              <span *ngFor="let author of book?.authors">
+                <img src={{author.photo}} class="author-photo" title={{author.name}}/>
+              </span>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-md-8 author-series" *ngIf="book?.serie != undefined">
+              <h4>Series: {{book?.serie.name}}</h4>
+              <div dragScroll [drag-scroll-y-disabled]="true" style="height: 100%">
+                <div class="inline">
               <span *ngFor="let b of book?.serie.books">
                 <app-book-small-item [book]="b" class="book-small" *ngIf="book?.id != b.id"></app-book-small-item>
               </span>
-            </div>
+                </div>
+              </div>
             </div>
           </div>
+
+
+          <div class="book-plot">
+            <h3>Plot</h3>
+            <p>{{book?.plot}}</p>
+          </div>
+
+          <div class="book-reviews">
+            <h3>Reviews</h3>
+          </div>
+
 
         </div>
 

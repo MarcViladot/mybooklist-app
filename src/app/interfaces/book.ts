@@ -17,7 +17,7 @@ export interface Book {
   cover: string;
   authors: Author[];
   genres: Genre[];
-  serie: Serie;
+  serie?: Serie;
   reviews: Review[];
 
 }

@@ -11,6 +11,7 @@ import {ActivatedRoute, Router} from '@angular/router';
 export class GenreSearchComponent implements OnInit {
 
   id: number;
+  genre: string;
   books: Book[];
 
   constructor(private activatedRoute: ActivatedRoute,

@@ -19,20 +19,36 @@ p {
   margin: 5px!important;
 }
 
-.bh {
-  border: 1px solid #000000;
-  height: 180px;
+.author-series {
+  height: 200px;
 }
 
 .details {
-  margin-bottom: 10px;
-  margin-top: 10px;
+  margin-bottom: 50px;
+  margin-top: 20px;
+  overflow-y: hidden;
 }
 
 .book-small {
   height: 40px;
 }
 
-.series {
+.inline {
   display: inline;
+}
+
+.author-photo {
+  height: 80%;
+  width: auto;
+  border-radius: 5px;
+  margin-right: 5px;
+}
+
+.author-photo:hover {
+  cursor: pointer;
+  opacity: .8;
+}
+
+.book-plot {
+  margin-bottom: 50px;
 }

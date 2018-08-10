@@ -11,8 +11,10 @@ import { HttpClientModule } from '@angular/common/http';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import {LayoutModule} from '@angular/cdk/layout';
 import { FlexLayoutModule } from '@angular/flex-layout';
-import { MatToolbarModule, MatButtonModule, MatIconModule, MatDialogModule, MatInputModule, MatFormFieldModule, MatCardModule,
-  MatChipsModule, MatTabsModule} from '@angular/material';
+import {
+  MatToolbarModule, MatButtonModule, MatIconModule, MatDialogModule, MatInputModule, MatFormFieldModule, MatCardModule,
+  MatChipsModule, MatTabsModule, MatAutocompleteModule
+} from '@angular/material';
 
 import { ToolbarComponent } from './components/toolbar/toolbar.component';
 import { HomeComponent } from './components/home/home.component';
@@ -75,7 +77,8 @@ import { BookSmallItemComponent } from './components/books/book-small-item/book-
     MatFormFieldModule,
     MatCardModule,
     MatTabsModule,
-    MatChipsModule
+    MatChipsModule,
+    MatAutocompleteModule
   ],
   entryComponents: [
     SigninComponent,
