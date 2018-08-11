@@ -1,0 +1,23 @@
+mat-card {
+  width: 100%;
+  padding: 0!important;
+}
+
+table {
+  width: 100%;
+}
+
+.header-button {
+  cursor: pointer;
+}
+.header-button:hover {
+  color: #3F51B5;
+}
+
+td {
+  padding: 7px;
+}
+
+th {
+  padding: 7px;
+}

@@ -1,22 +1,31 @@
 <h4 style="padding-bottom: 5px">{{book?.name}}</h4>
 <div class="row">
 
-  <div class="col-lg-3 d col">
+  <div class="col-lg-3 col">
     <div style="width: 80%">
 
       <div class="information-row">
         <img src={{book?.cover}} class="cover"/>
-        <div class="button-col">
 
-          <div *ngIf="isInUserList">
-            <div class="book-added">
-              <p><b>Status:</b> {{added?.status}}</p>
-              <p><b>Progress:</b> {{added?.progress}}/{{book?.pages}}</p>
-              <p><b>Score:</b> {{added?.score}} </p>
-              <button mat-stroked-button color="primary" class="full-width">Edit Details</button>
-            </div>
+
+        <div *ngIf="isInUserList">
+          <div class="book-added">
+            <p><b>Status:</b> {{added?.status}}</p>
+            <p><b>Progress:</b> {{added?.progress}}/{{book?.pages}}</p>
+            <p><b>Your Score:</b>
+              <span *ngIf="added?.score != 0"> {{added?.score}}</span>
+              <span *ngIf="added?.score == 0"> - </span>
+            </p>
+
           </div>
+        </div>
 
+        <div fxLayout="row" class="buttons">
+          <button mat-stroked-button *ngIf="isInUserList" color="primary" class="full-width" id="left" (click)="editAdded()">Edit Details</button>
+          <button mat-stroked-button *ngIf="isInUserList" color="warn" class="full-width right" id="right" (click)="removeAdded()">Remove</button>
+        </div>
+
+        <div class="button-col">
           <button mat-raised-button *ngIf="!isInUserList" color="primary" (click)="addToList()">
             Add to my list
           </button>
@@ -25,8 +34,8 @@
           <button mat-stroked-button *ngIf="isFavourite" color="warn" (click)="removeFromFavourites()">Remove from
             favourites
           </button>
-
         </div>
+
 
       </div>
 
@@ -42,7 +51,7 @@
 
       <div class="information-row">
         <h3>Statistics</h3>
-        <p>Score: {{book?.score}}</p>
+        <p>Score: {{book?.score | number:'1.1-2'}}</p>
         <p>Favourites: {{book?.popularity}}</p>
         <p>Total Members: {{book?.members}}</p>
       </div>
@@ -52,7 +61,7 @@
   </div>
 
 
-  <div class="col-lg-9 d col">
+  <div class="col-lg-9 col">
 
     <mat-tab-group>
       <mat-tab label="Details">
@@ -72,7 +81,7 @@
             </div>
 
             <div class="col-md-8 author-series" *ngIf="book?.serie != undefined">
-              <h4>Series: {{book?.serie.name}}</h4>
+              <h4>Book Series: {{book?.serie.name}}</h4>
               <div dragScroll [drag-scroll-y-disabled]="true" style="height: 100%">
                 <div class="inline">
               <span *ngFor="let b of book?.serie.books">

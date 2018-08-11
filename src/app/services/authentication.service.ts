@@ -18,7 +18,7 @@ export class AuthenticationService {
 
   handleError = (error: Response) => {
     return throwError(error);
-  };
+  }
 
   constructor(private http: HttpClient) { }
 

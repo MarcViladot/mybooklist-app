@@ -1,0 +1,15 @@
+input {
+  text-align: right;
+  width: 65%;
+}
+
+.width {
+  width: 100%;
+  padding: 0!important;
+}
+
+.bottom-right {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+}

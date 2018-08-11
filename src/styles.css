@@ -27,6 +27,10 @@ body {
   cursor: pointer;
 }
 
+.full-width {
+  width: 100%;
+}
+
 .break {
   flex-grow: 1;
   display: flex;

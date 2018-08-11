@@ -1,0 +1,38 @@
+<h4 style="margin-bottom: 20px">Add "{{book.name}}" to my list</h4>
+<form [formGroup]="addForm" (ngSubmit)="postAdded()" class="container-column" style="position: relative">
+
+  <div class="row">
+    <div class="col">
+      <mat-form-field class="width">
+        <mat-select placeholder="Status" formControlName="status">
+          <mat-option *ngFor="let s of status" [value]="s.value">
+            {{s.viewValue}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+
+    <div class="col width">
+      <mat-form-field class="width">
+        <span><input matInput placeholder="Progress" formControlName="progress"/> /{{book.pages}} Pages</span>
+      </mat-form-field>
+    </div>
+  </div>
+
+
+  <mat-form-field class="col-md-6 width">
+    <mat-select placeholder="Your Score" formControlName="score">
+      <mat-option *ngFor="let score of scores" [value]="score.value">
+        {{score.viewValue}}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+
+  <button mat-raised-button color="primary" type="submit" class="bottom-right" [disabled]="!addForm.valid">Add Book
+  </button>
+
+
+
+
+
+</form>

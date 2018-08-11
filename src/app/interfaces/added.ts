@@ -1,5 +1,9 @@
+import {Book} from './book';
+
 export interface Added {
-  progress: string;
+  id: number;
+  progress: number;
   status: string;
   score: number;
+  book?: Book;
 }

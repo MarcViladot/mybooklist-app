@@ -1,0 +1,24 @@
+<mat-card>
+<table class="table-striped">
+  <thead>
+  <tr>
+    <th scope="col">#</th>
+    <th scope="col" class="header-button" (click)="sortAddeds('name')">Name</th>
+    <th scope="col" class="header-button" (click)="sortAddeds('score')">Score</th>
+    <th scope="col"  class="header-button" (click)="sortAddeds('progress')">Progress</th>
+    <th *ngIf="listOwner" scope="col">Edit</th>
+    <th *ngIf="listOwner" scope="col">Remove</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr *ngFor="let added of addeds; let i = index">
+    <th scope="row">{{i + 1}}</th>
+    <td class="header-button" (click)="goToBook(added.book.id)">{{added.book.name}}</td>
+    <td>{{added.score}}</td>
+    <td>{{added.progress}}</td>
+    <td *ngIf="listOwner" class="cursor" (click)="editAdded(added)"> <!--<i class="fa fa-pencil-square-o" aria-hidden="true"></i>--> edit </td>
+    <td *ngIf="listOwner" class="cursor" (click)="remove(added.id)"> <!--<i class="fa fa-trash-o" aria-hidden="true"></i>--> remove </td>
+  </tr>
+  </tbody>
+</table>
+</mat-card>

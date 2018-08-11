@@ -7,6 +7,8 @@ import {SigninComponent} from '../../user/signin/signin.component';
 import {MatDialog} from '@angular/material';
 import {ListService} from '../../../services/list.service';
 import {Added} from '../../../interfaces/added';
+import {AddListDialogComponent} from '../../list/add-list-dialog/add-list-dialog.component';
+import {EditListDialogComponent} from '../../list/edit-list-dialog/edit-list-dialog.component';
 
 @Component({
   selector: 'app-book-detail',
@@ -35,7 +37,13 @@ export class BookDetailComponent implements OnInit {
     this.activatedRoute.paramMap.subscribe(params => {
       this.id = +params.get('id');
     });
+    this.listService.addedHasChanged.subscribe(added => this.addedChanged(added));
     this.authService.getLoggedIn.subscribe(logged => this.changeLogged(logged));
+  }
+
+  private addedChanged(added: Added) {
+    this.isInUserList = true;
+    this.added = added;
   }
 
   ngOnInit() {
@@ -75,6 +83,12 @@ export class BookDetailComponent implements OnInit {
     }
   }
 
+  private removeAdded(): void {
+    this.listService.removeAdded(this.added.id).subscribe(
+      res => this.isInUserList = false
+    );
+  }
+
   addToFavourites(): void {
     if (!this.logged) {
       this.openDialogSignIn();
@@ -97,8 +111,27 @@ export class BookDetailComponent implements OnInit {
     if (!this.logged) {
       this.openDialogSignIn();
     } else {
-      // Add to List
+      let dialogRef = this.dialog.open(AddListDialogComponent, {
+        height: 'auto',
+        width: '50%'
+      });
+      dialogRef.componentInstance.book = this.book;
+      dialogRef.afterClosed().subscribe(response => {
+        dialogRef = null;
+      });
     }
+  }
+
+  editAdded(): void {
+    let dialogRef = this.dialog.open(EditListDialogComponent, {
+      height: 'auto',
+      width: '50%'
+    });
+    dialogRef.componentInstance.book = this.book;
+    dialogRef.componentInstance.added = this.added;
+    dialogRef.afterClosed().subscribe(response => {
+      dialogRef = null;
+    });
   }
 
   openDialogSignIn(): void {

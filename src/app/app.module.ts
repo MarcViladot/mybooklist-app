@@ -13,7 +13,7 @@ import {LayoutModule} from '@angular/cdk/layout';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import {
   MatToolbarModule, MatButtonModule, MatIconModule, MatDialogModule, MatInputModule, MatFormFieldModule, MatCardModule,
-  MatChipsModule, MatTabsModule, MatAutocompleteModule
+  MatChipsModule, MatTabsModule, MatAutocompleteModule, MatSelectModule, MatSortModule, MatTableModule
 } from '@angular/material';
 
 import { ToolbarComponent } from './components/toolbar/toolbar.component';
@@ -25,7 +25,7 @@ import { DragScrollModule } from 'ngx-drag-scroll';
 // Services
 import {BookService} from './services/book.service';
 import { SigninComponent } from './components/user/signin/signin.component';
-import { SignupComponent } from './signup/signup.component';
+import { SignupComponent } from './components/user/signup/signup.component';
 import {AuthenticationService} from './services/authentication.service';
 import {ReviewService} from './services/review.service';
 import { BookItemComponent } from './components/books/book-item/book-item.component';
@@ -34,8 +34,12 @@ import { BookDetailComponent } from './components/books/book-detail/book-detail.
 import {ListService} from './services/list.service';
 import { ReviewItemComponent } from './components/reviews/review-item/review-item.component';
 import {NgxPaginationModule} from 'ngx-pagination';
-import { GenreSearchComponent } from './components/genre-search/genre-search.component';
+import { GenreSearchComponent } from './components/books/genre-search/genre-search.component';
 import { BookSmallItemComponent } from './components/books/book-small-item/book-small-item.component';
+import { AddListDialogComponent } from './components/list/add-list-dialog/add-list-dialog.component';
+import { EditListDialogComponent } from './components/list/edit-list-dialog/edit-list-dialog.component';
+import { BookListItemComponent } from './components/list/book-list-item/book-list-item.component';
+import { UserListComponent } from './components/user/user-list/user-list.component';
 
 
 
@@ -52,7 +56,11 @@ import { BookSmallItemComponent } from './components/books/book-small-item/book-
     BookDetailComponent,
     ReviewItemComponent,
     GenreSearchComponent,
-    BookSmallItemComponent
+    BookSmallItemComponent,
+    AddListDialogComponent,
+    EditListDialogComponent,
+    BookListItemComponent,
+    UserListComponent
   ],
   imports: [
     BrowserModule,
@@ -75,14 +83,19 @@ import { BookSmallItemComponent } from './components/books/book-small-item/book-
     MatDialogModule,
     MatInputModule,
     MatFormFieldModule,
+    MatTableModule,
+    MatSortModule,
     MatCardModule,
     MatTabsModule,
+    MatSelectModule,
     MatChipsModule,
     MatAutocompleteModule
   ],
   entryComponents: [
     SigninComponent,
-    SignupComponent
+    SignupComponent,
+    AddListDialogComponent,
+    EditListDialogComponent
   ],
   providers: [BookService, AuthenticationService, ReviewService, ListService],
   bootstrap: [AppComponent]
