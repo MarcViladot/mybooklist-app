@@ -21,3 +21,7 @@ td {
 th {
   padding: 7px;
 }
+
+.book-name {
+  width: 50%;
+}

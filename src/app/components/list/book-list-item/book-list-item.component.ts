@@ -17,12 +17,12 @@ export class BookListItemComponent implements OnInit {
 
   @Input() addeds: Added[];
   @Input() listOwner = false;
+  sortPetition = false;
 
   constructor(private listService: ListService,
               public dialog: MatDialog,
               private router: Router) {
     this.listService.arraySorted.subscribe(array => this.sort(array));
-
   }
 
   ngOnInit(): void {
@@ -30,10 +30,14 @@ export class BookListItemComponent implements OnInit {
   }
 
   private sort(addeds: Added[]): void {
-    this.addeds = addeds;
+    if (this.sortPetition) {
+      this.addeds = addeds;
+    }
+    this.sortPetition = false;
   }
 
   sortAddeds(value: string) {
+    this.sortPetition = true;
     this.listService.sortArray(this.addeds, value);
   }
 

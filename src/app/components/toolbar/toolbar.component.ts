@@ -52,6 +52,10 @@ export class ToolbarComponent implements OnInit {
     this.router.navigate(['/books/' + id]);
   }
 
+  goToList(): void {
+    this.router.navigate(['/user/' + this.currentUser.id + '/booklist']);
+  }
+
   signOut(): void {
     this.authService.signOut();
   }
