@@ -85,7 +85,10 @@ export class BookDetailComponent implements OnInit {
 
   private removeAdded(): void {
     this.listService.removeAdded(this.added.id).subscribe(
-      res => this.isInUserList = false
+      res => {
+        this.isInUserList = false;
+        this.book.members--;
+      }
     );
   }
 
@@ -95,7 +98,9 @@ export class BookDetailComponent implements OnInit {
     } else {
       this.bookService.postFavouriteBook(AuthenticationService.getCurrentUser().id, this.id).subscribe(
         response => {
-         this.getFavourite();
+         this.isFavourite = true;
+         this.favouriteId = response.id;
+         this.book.popularity++;
         }
       );
     }
@@ -103,7 +108,10 @@ export class BookDetailComponent implements OnInit {
 
   removeFromFavourites(): void {
     this.bookService.deleteFavouriteBook(this.favouriteId).subscribe(
-      res => this.isFavourite = false
+      res => {
+        this.isFavourite = false;
+        this.book.popularity--;
+      }
     );
   }
 

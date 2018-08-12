@@ -2,8 +2,8 @@
 <div class="row">
   <div class="col-lg-2">
     <img src={{author?.photo}} class="photo"/>
-    <button *ngIf="!isFavourite" mat-raised-button class="photo" color="primary">Add to Favourites</button>
-    <button *ngIf="isFavourite" mat-stroked-button class="photo" color="primary">Remove from Favourites</button>
+    <button *ngIf="!isFavourite" mat-raised-button class="photo" color="primary" (click)="addFavourite()">Add to Favourites</button>
+    <button *ngIf="isFavourite" mat-stroked-button class="photo" color="primary" (click)="removeFavourite()">Remove from Favourites</button>
     <br>
     <p><b>Birthday: </b>{{author?.born | date:'longDate'}}</p>
     <p><b>Favourties: </b>{{author?.popularity}}</p>
@@ -19,7 +19,7 @@
         <th scope="col" class="header-button" (click)="sort('name')">Name</th>
         <th scope="col" class="header-button" (click)="sort('pages')">Pages</th>
         <th scope="col" class="header-button" (click)="sort('date')">Publication Year</th>
-        <th scope="col" class="header-button" (click)="sort('rating')">Score</th>
+        <th scope="col" class="header-button" (click)="sort('rating')">Score </th>
       </tr>
       </thead>
       <tbody>
@@ -29,7 +29,7 @@
         <td class="header-button" style="width: 50%" (click)="goToBook(book.id)">{{book.name}}</td>
         <td>{{book.pages}}</td>
         <td>{{book.year}}</td>
-        <td>{{book.score | number:'1.1-2'}}</td>
+        <td>{{book.score | number:'1.1-2'}} <i class="fa fa-star-o" aria-hidden="true"></i></td>
       </tr>
       </tbody>
     </table>
