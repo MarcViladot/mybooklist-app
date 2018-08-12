@@ -23,7 +23,7 @@ export class BookService {
 
   handleError = (error: Response) => {
     return throwError(error);
-  };
+  }
 
   getAllBooks(): Observable<any> {
     return this.http.get<any>(this.url, {
@@ -102,7 +102,7 @@ export class BookService {
           return n2.score - n1.score;
         }
         case 'date': {
-          return n1.year - n2.year;
+          return n2.year - n1.year;
         }
         case 'name': {
           if (n1.name > n2.name) {
