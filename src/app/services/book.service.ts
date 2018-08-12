@@ -104,7 +104,7 @@ export class BookService {
         case 'date': {
           return n1.year - n2.year;
         }
-        case 'abc': {
+        case 'name': {
           if (n1.name > n2.name) {
             return 1;
           }
@@ -115,6 +115,9 @@ export class BookService {
         }
         case 'popularity': {
           return n2.popularity - n1.popularity;
+        }
+        case 'pages': {
+          return n2.pages - n1.pages;
         }
       }
     });

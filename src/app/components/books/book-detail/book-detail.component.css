@@ -50,10 +50,10 @@ p {
   width: auto;
   border-radius: 5px;
   margin-right: 5px;
+  cursor: pointer;
 }
 
 .author-photo:hover {
-  cursor: pointer;
   opacity: .8;
 }
 

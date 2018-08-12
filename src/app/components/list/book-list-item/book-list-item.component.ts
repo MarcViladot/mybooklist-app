@@ -1,12 +1,9 @@
 import {AfterContentChecked, AfterContentInit, AfterViewInit, Component, Input, OnInit, ViewChild} from '@angular/core';
 import {Added} from '../../../interfaces/added';
 import {MatDialog, MatSort, MatTableDataSource} from '@angular/material';
-import {BookService} from '../../../services/book.service';
 import {ListService} from '../../../services/list.service';
-import {Book} from '../../../interfaces/book';
 import {Router} from '@angular/router';
 import {EditListDialogComponent} from '../edit-list-dialog/edit-list-dialog.component';
-import {AuthenticationService} from '../../../services/authentication.service';
 
 @Component({
   selector: 'app-book-list-item',

@@ -15,7 +15,7 @@ export class BooksDisplayComponent implements OnInit {
     selectedSorting = '';
 
     sortings = [
-        {value: 'abc', viewValue: 'Title'},
+        {value: 'name', viewValue: 'Title'},
         {value: 'rating', viewValue: 'Top rated'},
         {value: 'date', viewValue: 'Newest'},
         {value: 'popularity', viewValue: 'Most Popular'}

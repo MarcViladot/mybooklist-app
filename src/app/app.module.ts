@@ -40,6 +40,8 @@ import { AddListDialogComponent } from './components/list/add-list-dialog/add-li
 import { EditListDialogComponent } from './components/list/edit-list-dialog/edit-list-dialog.component';
 import { BookListItemComponent } from './components/list/book-list-item/book-list-item.component';
 import { UserListComponent } from './components/user/user-list/user-list.component';
+import { AuthorDetailComponent } from './components/author/author-detail/author-detail.component';
+import {AuthorService} from './services/author.service';
 
 
 
@@ -60,7 +62,8 @@ import { UserListComponent } from './components/user/user-list/user-list.compone
     AddListDialogComponent,
     EditListDialogComponent,
     BookListItemComponent,
-    UserListComponent
+    UserListComponent,
+    AuthorDetailComponent
   ],
   imports: [
     BrowserModule,
@@ -97,7 +100,7 @@ import { UserListComponent } from './components/user/user-list/user-list.compone
     AddListDialogComponent,
     EditListDialogComponent
   ],
-  providers: [BookService, AuthenticationService, ReviewService, ListService],
+  providers: [BookService, AuthenticationService, ReviewService, ListService, AuthorService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

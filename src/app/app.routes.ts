@@ -5,6 +5,7 @@ import {BookSearchComponent} from './components/books/book-search/book-search.co
 import {BookDetailComponent} from './components/books/book-detail/book-detail.component';
 import {GenreSearchComponent} from './components/books/genre-search/genre-search.component';
 import {UserListComponent} from './components/user/user-list/user-list.component';
+import {AuthorDetailComponent} from './components/author/author-detail/author-detail.component';
 
 
 export const ROUTES: Routes = [
@@ -14,4 +15,5 @@ export const ROUTES: Routes = [
   {path: 'books/:id', component: BookDetailComponent},
   {path: 'genre/:id', component: GenreSearchComponent},
   {path: 'user/:id/booklist', component: UserListComponent},
+  {path: 'author/:id', component: AuthorDetailComponent},
 ];

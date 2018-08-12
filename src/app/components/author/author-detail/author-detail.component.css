@@ -1,0 +1,44 @@
+.b {
+  border: 1px solid #000;
+}
+
+.photo {
+  margin-bottom: 10px;
+  width: 100%;
+}
+
+p {
+  margin: 5px!important;
+}
+
+.biography {
+  font-size: .8em;
+}
+
+.cover {
+  height: 100px;
+}
+
+table {
+  width: 100%;
+}
+
+td {
+  padding: 7px;
+}
+
+th {
+  padding: 7px;
+}
+
+.header-button {
+  cursor: pointer;
+}
+.header-button:hover {
+  color: #3F51B5;
+}
+
+.cover:hover {
+  cursor: pointer;
+  opacity: .8;
+}

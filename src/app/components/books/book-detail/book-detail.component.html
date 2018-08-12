@@ -1,4 +1,4 @@
-<h4 style="padding-bottom: 5px">{{book?.name}}</h4>
+<h4 style="padding-bottom: 10px">{{book?.name}}</h4>
 <div class="row">
 
   <div class="col-lg-3 col">
@@ -74,7 +74,7 @@
               <div dragScroll [drag-scroll-y-disabled]="true" style="height: 100%">
                 <div class="inline">
               <span *ngFor="let author of book?.authors">
-                <img src={{author.photo}} class="author-photo" title={{author.name}}/>
+                <img src={{author.photo}} class="author-photo" title={{author.name}} (click)="goToAuthor(author.id)"/>
               </span>
                 </div>
               </div>

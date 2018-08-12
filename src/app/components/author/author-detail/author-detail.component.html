@@ -1,0 +1,37 @@
+<h4 style="padding-bottom: 10px">{{author?.name}}</h4>
+<div class="row">
+  <div class="col-lg-2">
+    <img src={{author?.photo}} class="photo"/>
+    <button *ngIf="!isFavourite" mat-raised-button class="photo" color="primary">Add to Favourites</button>
+    <button *ngIf="isFavourite" mat-stroked-button class="photo" color="primary">Remove from Favourites</button>
+    <br>
+    <p><b>Birthday: </b>{{author?.born | date:'longDate'}}</p>
+    <p><b>Favourties: </b>{{author?.popularity}}</p>
+    <b style="margin-left: 5px">Biography: </b>
+    <p class="biography">{{author?.biography}}</p>
+  </div>
+  <div class="col-lg-9">
+    <table class="table-striped">
+      <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col"></th>
+        <th scope="col" class="header-button" (click)="sort('name')">Name</th>
+        <th scope="col" class="header-button" (click)="sort('pages')">Pages</th>
+        <th scope="col" class="header-button" (click)="sort('year')">Publication Year</th>
+        <th scope="col" class="header-button" (click)="sort('rating')">Score</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let book of author?.books; let i = index">
+        <th>{{i + 1}}</th>
+        <td><img src={{book.cover}} class="cover" (click)="goToBook(book.id)" /></td>
+        <td class="header-button" style="width: 50%" (click)="goToBook(book.id)">{{book.name}}</td>
+        <td>{{book.pages}}</td>
+        <td>{{book.year}}</td>
+        <td>{{book.score | number:'1.1-2'}}</td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

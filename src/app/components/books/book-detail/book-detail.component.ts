@@ -148,6 +148,10 @@ export class BookDetailComponent implements OnInit {
     this.router.navigate(['/genre/' + id]);
   }
 
+  goToAuthor(id: number): void  {
+    this.router.navigate(['/author/' + id]);
+  }
+
   private changeLogged(logged: boolean) {
     this.logged = logged;
     this.getAdded();
