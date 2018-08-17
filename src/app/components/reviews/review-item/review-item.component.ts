@@ -15,7 +15,7 @@ export class ReviewItemComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
-    this.textSplit = this.review.text.match(/.{1,1000}/g)[0];
+    this.textSplit = this.review.text.substring(0, 1000); // match(/.{1,1000}/g)[0];
   }
 
   changeText(b: boolean) {

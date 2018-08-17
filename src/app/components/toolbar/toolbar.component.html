@@ -1,6 +1,6 @@
 <mat-toolbar color="primary">
   <mat-toolbar-row>
-    <span class="title cursor"><b>MyBookList</b></span>
+    <span class="title cursor" [routerLink]="['/home']"><b>MyBookList</b></span>
 
     <div fxFlex></div>
 
@@ -23,7 +23,7 @@
     <!-- USER PART -->
     <div class="button-row" *ngIf="!logged">
       <button mat-raised-button (click)="openDialogSignIn()">Sign in</button>
-      <button mat-raised-button>Sign up</button>
+      <button mat-raised-button (click)="openDialogSignUp()">Sign up</button>
     </div>
     <div class="button-row" *ngIf="logged">
       <div class="d-inline-block" ngbDropdown #myDrop="ngbDropdown">

@@ -4,6 +4,8 @@ import {Observable, throwError} from 'rxjs';
 import {Book} from '../interfaces/book';
 import {catchError} from 'rxjs/operators';
 import {Review} from '../interfaces/review';
+import {Added} from '../interfaces/added';
+import {AuthenticationService} from './authentication.service';
 
 @Injectable({
   providedIn: 'root'
@@ -29,6 +31,26 @@ export class ReviewService {
     return this.http.get<any>(this.url + 'book/' + id, {
       headers: new HttpHeaders({
         'Accept': 'application/json'
+      })
+    });
+  }
+
+  postReview(data: any): Observable<Review> {
+    return this.http.post<Review>(this.url, data, {
+      headers: new HttpHeaders({
+        'Accept': 'application/json',
+        'Authorization': AuthenticationService.getAuthToken()
+      })
+    }).pipe(
+      catchError(this.handleError)
+    );
+  }
+
+  getReviewByBoookAndUser(book_id: number): Observable<any> {
+    return this.http.get<any>(this.url + 'user-book/' + book_id, {
+      headers: new HttpHeaders({
+        'Accept': 'application/json',
+        'Authorization': AuthenticationService.getAuthToken()
       })
     });
   }

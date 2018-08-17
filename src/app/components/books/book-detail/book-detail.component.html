@@ -21,8 +21,12 @@
         </div>
 
         <div fxLayout="row" class="buttons">
-          <button mat-stroked-button *ngIf="isInUserList" color="primary" class="full-width" id="left" (click)="editAdded()">Edit Details</button>
-          <button mat-stroked-button *ngIf="isInUserList" color="warn" class="full-width right" id="right" (click)="removeAdded()">Remove</button>
+          <button mat-stroked-button *ngIf="isInUserList" color="primary" class="full-width" id="left"
+                  (click)="editAdded()">Edit Details
+          </button>
+          <button mat-stroked-button *ngIf="isInUserList" color="warn" class="full-width right" id="right"
+                  (click)="removeAdded()">Remove
+          </button>
         </div>
 
         <div class="button-col">
@@ -95,12 +99,30 @@
 
           <div class="book-plot">
             <h3>Plot</h3>
-            <p>{{book?.plot}}</p>
+            <p style="margin: 0!important;">{{book?.plot}}</p>
           </div>
 
           <div class="book-reviews">
             <h3>Reviews</h3>
+            <div *ngFor="let review of book?.reviews; let i = index" style="margin-bottom: 20px">
+              <app-review-item [review]="review" *ngIf="i < 4"></app-review-item>
+            </div>
+            <h4 *ngIf="!userHasReview && logged" class="cursor-text" (click)="writeReview = true">Write Review</h4>
+            <div class="full-width" *ngIf="writeReview && logged">
+              <p-editor [(ngModel)]="text" [ngModelOptions]="{standalone: true}" [style]="{'height':'320px'}">
+                <p-header>
+                  <span class="ql-formats">
+                    <button class="ql-bold" aria-label="Bold"></button>
+                    <button class="ql-italic" aria-label="Italic"></button>
+                    <button class="ql-underline" aria-label="Underline"></button>
+                  </span>
+                  <span class="float-right cursor-text" (click)="postReview()">Post Review</span>
+                </p-header>
+              </p-editor>
+            </div>
           </div>
+
+          <div style="height: 800px"></div>
 
 
         </div>
@@ -108,11 +130,13 @@
 
       </mat-tab>
       <mat-tab label="Reviews">
-        <div align="center">
-          <div *ngFor="let review of book?.reviews | paginate: { itemsPerPage: 4, currentPage: p }">
-            <app-review-item [review]="review"></app-review-item>
+        <div>
+          <div align="center">
+            <div *ngFor="let review of book?.reviews | paginate: { itemsPerPage: 4, currentPage: p }">
+              <app-review-item [review]="review"></app-review-item>
+            </div>
+            <pagination-controls (pageChange)="p = $event"></pagination-controls>
           </div>
-          <pagination-controls (pageChange)="p = $event"></pagination-controls>
         </div>
       </mat-tab>
       <mat-tab label="Stats"> Content 3</mat-tab>

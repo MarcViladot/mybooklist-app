@@ -1,3 +1,51 @@
-<p>
-  signup works!
-</p>
+<!--<i class="float-right fa fa-times" aria-hidden="true" (click)="dialogRef.close()"></i>-->
+<form [formGroup]="signupForm" (ngSubmit)="postUser()" class="container-column">
+
+  <h4>Sign Up</h4>
+  <div fxLayout="row">
+    <div class="col-md-6">
+      <mat-form-field class="full-width">
+        <input matInput formControlName="email" type="email" placeholder="Email">
+      </mat-form-field>
+    </div>
+    <div class="col-md-6">
+      <mat-form-field class="full-width">
+        <input matInput formControlName="username" placeholder="Username">
+      </mat-form-field>
+    </div>
+  </div>
+
+  <div fxLayout="row">
+    <div class="col-md-6">
+      <mat-form-field class="full-width">
+        <input matInput formControlName="password" placeholder="Password" [type]="hide ? 'password' : 'text'">
+        <mat-icon *ngIf="hide" matSuffix (click)="hide = !hide"><i class="fa fa-eye" aria-hidden="true"></i></mat-icon>
+        <mat-icon *ngIf="!hide" matSuffix (click)="hide = !hide"><i class="fa fa-eye-slash" aria-hidden="true"></i>
+        </mat-icon>
+      </mat-form-field>
+    </div>
+    <div class="col-md-6">
+      <mat-form-field class="full-width">
+        <input matInput formControlName="passwordConfirmation" placeholder="Password Confirmation"
+               [type]="hide ? 'password' : 'text'">
+      </mat-form-field>
+    </div>
+  </div>
+
+
+  <br>
+  <div *ngIf="errorShow" class="alert alert-danger col-md-12" role="alert">
+    Error Creating User, check and try again.
+  </div>
+
+  <div>
+    <button class="float-right" mat-raised-button color="primary" type="submit" [disabled]="!signupForm.valid">Sign Up
+    </button>
+  </div>
+
+</form>
+
+
+
+
+

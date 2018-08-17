@@ -3,6 +3,7 @@ import {Observable, throwError} from 'rxjs';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {Author} from '../interfaces/author';
 import {catchError} from 'rxjs/operators';
+import {AuthenticationService} from './authentication.service';
 
 @Injectable({
   providedIn: 'root'
@@ -35,19 +36,24 @@ export class AuthorService {
     });
   }
 
-  getFavByAuthorAndUser(user_id: number, author_id: number): Observable<any> {
-    return this.http.get<any>(this.urlF + user_id + '/' + author_id, {
+  getFavByAuthorAndUser(author_id: number): Observable<any> {
+    return this.http.get<any>(this.urlF + author_id, {
       headers: new HttpHeaders({
-        'Accept': 'application/json'
+        'Accept': 'application/json',
+        'Authorization': AuthenticationService.getAuthToken()
       })
     });
   }
 
   postFavouriteAuthor(user_id: number, author_id: number): Observable<any> {
-    return this.http.post<any>(this.urlFavourites, {'user_id': user_id, 'author_id': author_id})
-      .pipe(
-        catchError(this.handleError)
-      );
+    return this.http.post<any>(this.urlFavourites, {'user_id': user_id, 'author_id': author_id}, {
+      headers: new HttpHeaders({
+        'Accept': 'application/json',
+        'Authorization': AuthenticationService.getAuthToken()
+      })
+    }).pipe(
+      catchError(this.handleError)
+    );
   }
 
   deleteFavouriteAuthor(id: number): Observable<any> {

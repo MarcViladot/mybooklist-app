@@ -13,7 +13,7 @@ import {LayoutModule} from '@angular/cdk/layout';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import {
   MatToolbarModule, MatButtonModule, MatIconModule, MatDialogModule, MatInputModule, MatFormFieldModule, MatCardModule,
-  MatChipsModule, MatTabsModule, MatAutocompleteModule, MatSelectModule, MatSortModule, MatTableModule
+  MatChipsModule, MatTabsModule, MatAutocompleteModule, MatSelectModule, MatSortModule, MatTableModule, MatSnackBarModule
 } from '@angular/material';
 
 import { ToolbarComponent } from './components/toolbar/toolbar.component';
@@ -42,7 +42,7 @@ import { BookListItemComponent } from './components/list/book-list-item/book-lis
 import { UserListComponent } from './components/user/user-list/user-list.component';
 import { AuthorDetailComponent } from './components/author/author-detail/author-detail.component';
 import {AuthorService} from './services/author.service';
-
+import {EditorModule} from 'primeng/primeng';
 
 
 @NgModule({
@@ -74,6 +74,7 @@ import {AuthorService} from './services/author.service';
     FormsModule,
     DragScrollModule,
     NgxPaginationModule,
+    EditorModule,
     ReactiveFormsModule,
     RouterModule.forRoot(ROUTES, {
       useHash: Boolean(history.pushState) === false,
@@ -91,6 +92,7 @@ import {AuthorService} from './services/author.service';
     MatCardModule,
     MatTabsModule,
     MatSelectModule,
+    MatSnackBarModule,
     MatChipsModule,
     MatAutocompleteModule
   ],

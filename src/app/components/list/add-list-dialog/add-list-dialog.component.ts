@@ -56,7 +56,6 @@ export class AddListDialogComponent implements OnInit {
       'progress': progress,
       'status': status,
       'score': score,
-      'user_id': AuthenticationService.getCurrentUser().id,
       'book_id': this.book.id
     };
     this.listService.postAdded(data).subscribe(

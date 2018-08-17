@@ -37,7 +37,7 @@ export class AuthorDetailComponent implements OnInit {
   }
   private setFavourite() {
     if (AuthenticationService.isLogged()) {
-      this.authorService.getFavByAuthorAndUser(AuthenticationService.getCurrentUser().id, this.id).subscribe(
+      this.authorService.getFavByAuthorAndUser(this.id).subscribe(
         res => {
           this.isFavourite = res !== null;
           if (res !== null) { this.favouriteId = res.id; }

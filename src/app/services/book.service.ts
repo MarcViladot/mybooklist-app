@@ -5,6 +5,7 @@ import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {catchError} from 'rxjs/operators';
 import {Book} from '../interfaces/book';
 import {Added} from '../interfaces/added';
+import {AuthenticationService} from './authentication.service';
 
 
 @Injectable({
@@ -73,19 +74,24 @@ export class BookService {
       );
   }
 
-  getFavByBoookAndUser(user_id: number, book_id: number): Observable<any> {
-    return this.http.get<any>(this.urlF + user_id + '/' + book_id, {
+  getFavByBoookAndUser(book_id: number): Observable<any> {
+    return this.http.get<any>(this.urlF + book_id, {
       headers: new HttpHeaders({
-        'Accept': 'application/json'
+        'Accept': 'application/json',
+        'Authorization': AuthenticationService.getAuthToken()
       })
     });
   }
 
-  postFavouriteBook(user_id: number, book_id: number): Observable<any> {
-    return this.http.post<any>(this.urlFavourites, {'user_id': user_id, 'book_id': book_id})
-      .pipe(
-        catchError(this.handleError)
-      );
+  postFavouriteBook(book_id: number): Observable<any> {
+    return this.http.post<any>(this.urlFavourites, {'book_id': book_id}, {
+      headers: new HttpHeaders({
+        'Accept': 'application/json',
+        'Authorization': AuthenticationService.getAuthToken()
+      })
+    }).pipe(
+      catchError(this.handleError)
+    );
   }
 
   deleteFavouriteBook(id: number): Observable<any> {

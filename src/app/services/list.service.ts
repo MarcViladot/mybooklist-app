@@ -4,6 +4,7 @@ import {Observable, throwError} from 'rxjs';
 import {Book} from '../interfaces/book';
 import {Added} from '../interfaces/added';
 import {catchError} from 'rxjs/operators';
+import {AuthenticationService} from './authentication.service';
 
 @Injectable({
   providedIn: 'root'
@@ -23,34 +24,44 @@ export class ListService {
     return throwError(error);
   }
 
-  getAddedByBoookAndUser(user_id: number, book_id: number): Observable<Added> {
-    return this.http.get<Added>(this.urlA + user_id + '/' + book_id, {
+  getAddedByBoookAndUser(book_id: number): Observable<Added> {
+    return this.http.get<Added>(this.urlA + book_id, {
       headers: new HttpHeaders({
-        'Accept': 'application/json'
+        'Accept': 'application/json',
+        'Authorization': AuthenticationService.getAuthToken()
       })
     });
   }
 
-  getListByUser(id: number): Observable<any> {
-    return this.http.get<Added>(this.urlList + id, {
+  getListByUser(): Observable<any> {
+    return this.http.get<Added>(this.urlList, {
       headers: new HttpHeaders({
-        'Accept': 'application/json'
+        'Accept': 'application/json',
+        'Authorization': AuthenticationService.getAuthToken()
       })
     });
   }
 
   postAdded(data: any): Observable<Added> {
-    return this.http.post<Added>(this.url, data)
-      .pipe(
-        catchError(this.handleError)
-      );
+    return this.http.post<Added>(this.url, data, {
+      headers: new HttpHeaders({
+        'Accept': 'application/json',
+        'Authorization': AuthenticationService.getAuthToken()
+      })
+    }).pipe(
+      catchError(this.handleError)
+    );
   }
 
   updateAdded(id: number, data: any): Observable<Added> {
-    return this.http.put<Added>(this.url + id, data)
-      .pipe(
-        catchError(this.handleError)
-      );
+    return this.http.put<Added>(this.url + id, data, {
+      headers: new HttpHeaders({
+        'Accept': 'application/json',
+        'Authorization': AuthenticationService.getAuthToken()
+      })
+    }).pipe(
+      catchError(this.handleError)
+    );
   }
 
   removeAdded(id: number): Observable<any> {

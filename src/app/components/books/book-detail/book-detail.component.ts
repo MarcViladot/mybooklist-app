@@ -9,6 +9,7 @@ import {ListService} from '../../../services/list.service';
 import {Added} from '../../../interfaces/added';
 import {AddListDialogComponent} from '../../list/add-list-dialog/add-list-dialog.component';
 import {EditListDialogComponent} from '../../list/edit-list-dialog/edit-list-dialog.component';
+import {ReviewService} from '../../../services/review.service';
 
 @Component({
   selector: 'app-book-detail',
@@ -25,10 +26,15 @@ export class BookDetailComponent implements OnInit {
   favouriteId: number;
   added: Added;
 
+  userHasReview: boolean;
+  text = '';
+  writeReview = false;
+
   constructor(private activatedRoute: ActivatedRoute,
               private bookService: BookService,
               private authService: AuthenticationService,
               private listService: ListService,
+              private reviewService: ReviewService,
               public dialog: MatDialog,
               private router: Router) {
     this.router.routeReuseStrategy.shouldReuseRoute = function () {
@@ -50,14 +56,36 @@ export class BookDetailComponent implements OnInit {
     this.bookService.getBookById(this.id).subscribe(
       book => this.book = book
     );
+    if (AuthenticationService.isLogged()) {
+      this.reviewService.getReviewByBoookAndUser(this.id).subscribe(
+        res => this.userHasReview = res !== null
+      );
+    }
     this.changeLogged(AuthenticationService.isLogged());
     this.getFavourite();
     this.getAdded();
   }
 
+  postReview(): void {
+    let score = 0;
+    if (this.added !== undefined) {
+      score = this.added.score;
+    }
+    const data = {
+      'text': this.text,
+      'score': score,
+      'book_id': this.id
+    };
+    this.reviewService.postReview(data).subscribe(
+      res => {
+        this.userHasReview = true;
+      }
+    );
+  }
+
   private getFavourite(): void {
     if (this.logged) {
-      this.bookService.getFavByBoookAndUser(AuthenticationService.getCurrentUser().id, this.id).subscribe(
+      this.bookService.getFavByBoookAndUser(this.id).subscribe(
         response => {
           if (response !== null) {
             this.isFavourite = true;
@@ -71,7 +99,7 @@ export class BookDetailComponent implements OnInit {
 
   private getAdded(): void {
     if (this.logged) {
-      this.listService.getAddedByBoookAndUser(AuthenticationService.getCurrentUser().id, this.id).subscribe(
+      this.listService.getAddedByBoookAndUser(this.id).subscribe(
         response => {
           if (response !== null) {
             this.isInUserList = true;
@@ -83,7 +111,7 @@ export class BookDetailComponent implements OnInit {
     }
   }
 
-  private removeAdded(): void {
+  removeAdded(): void {
     this.listService.removeAdded(this.added.id).subscribe(
       res => {
         this.isInUserList = false;
@@ -96,11 +124,11 @@ export class BookDetailComponent implements OnInit {
     if (!this.logged) {
       this.openDialogSignIn();
     } else {
-      this.bookService.postFavouriteBook(AuthenticationService.getCurrentUser().id, this.id).subscribe(
+      this.bookService.postFavouriteBook(this.id).subscribe(
         response => {
-         this.isFavourite = true;
-         this.favouriteId = response.id;
-         this.book.popularity++;
+          this.isFavourite = true;
+          this.favouriteId = response.id;
+          this.book.popularity++;
         }
       );
     }
@@ -152,11 +180,11 @@ export class BookDetailComponent implements OnInit {
     });
   }
 
-  goToGenre(id: number): void  {
+  goToGenre(id: number): void {
     this.router.navigate(['/genre/' + id]);
   }
 
-  goToAuthor(id: number): void  {
+  goToAuthor(id: number): void {
     this.router.navigate(['/author/' + id]);
   }
 

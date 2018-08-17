@@ -9,6 +9,7 @@ import {BookService} from '../../services/book.service';
 import {Observable} from 'rxjs';
 import {map, startWith} from 'rxjs/operators';
 import {FormControl} from '@angular/forms';
+import {SignupComponent} from '../user/signup/signup.component';
 
 @Component({
   selector: 'app-toolbar',
@@ -62,6 +63,16 @@ export class ToolbarComponent implements OnInit {
 
   openDialogSignIn(): void {
     let dialogRef = this.dialog.open(SigninComponent, {
+      height: 'auto',
+      width: '50%'
+    });
+    dialogRef.afterClosed().subscribe(response => {
+      dialogRef = null;
+    });
+  }
+
+  openDialogSignUp(): void {
+    let dialogRef = this.dialog.open(SignupComponent, {
       height: 'auto',
       width: '50%'
     });

@@ -13,6 +13,7 @@ export class AuthenticationService {
 
   url = 'http://localhost:3000/api/v1/authenticate';
   urlCurrentUser = 'http://localhost:3000/api/v1/users?me=true';
+  urlUsers = 'http://localhost:3000/api/v1/users';
 
   @Output() getLoggedIn: EventEmitter<any> = new EventEmitter();
 
@@ -37,6 +38,13 @@ export class AuthenticationService {
 
   signIn(email: string, password: string): Observable<any> {
     return this.http.post<any>(this.url, {'email': email, 'password': password})
+      .pipe(
+        catchError(this.handleError)
+      );
+  }
+
+  signUp(data: any): Observable<any> {
+    return this.http.post<any>(this.urlUsers, data)
       .pipe(
         catchError(this.handleError)
       );
