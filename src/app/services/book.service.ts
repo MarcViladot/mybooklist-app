@@ -46,7 +46,8 @@ export class BookService {
   getBooksSearch(search: string): Observable<any> {
     return this.http.get<any>(this.url + 'show/search/' + search, {
       headers: new HttpHeaders({
-        'Accept': 'application/json'
+        'Accept': 'application/json',
+        'Authorization': AuthenticationService.getAuthToken()
       })
     });
   }
@@ -54,7 +55,8 @@ export class BookService {
   getBooksByGenre(id: number): Observable<any> {
     return this.http.get<any>(this.url + 'genre/' + id, {
       headers: new HttpHeaders({
-        'Accept': 'application/json'
+        'Accept': 'application/json',
+        'Authorization': AuthenticationService.getAuthToken()
       })
     });
   }

@@ -5,8 +5,14 @@
 
   <div class="book-content">
     <div align="center" class="row">
-      <div class="col cursor" *ngIf="book?.serie != undefined">
+      <!--<div class="col cursor" *ngIf="book?.serie != undefined">
         {{book?.serie.name}}
+      </div>-->
+      <div class="col cursor-text" *ngIf="logged && book?.added != undefined" (click)="editAdded()">
+        {{book?.added.status}}
+      </div>
+      <div class="col cursor-text" *ngIf="!logged || book?.added == undefined" (click)="addToList()">
+        ADD
       </div>
       <div class="col">
         {{book.pages}} Pages

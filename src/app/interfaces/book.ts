@@ -2,6 +2,7 @@ import {Author} from './author';
 import {Genre} from './genre';
 import {Serie} from './serie';
 import {Review} from './review';
+import {Added} from './added';
 
 export interface Book {
   id: number;
@@ -19,5 +20,6 @@ export interface Book {
   genres: Genre[];
   serie?: Serie;
   reviews: Review[];
+  added?: Added;
 
 }

@@ -25,3 +25,13 @@ th {
 .book-name {
   width: 50%;
 }
+
+.cover {
+  height: 100px;
+}
+
+.cover:hover {
+  cursor: pointer;
+  opacity: .8;
+}
+
