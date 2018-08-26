@@ -46,6 +46,7 @@ import {EditorModule} from 'primeng/primeng';
 import { UserDetailComponent } from './components/user/user-detail/user-detail.component';
 import { AddedItemComponent } from './components/list/added-item/added-item.component';
 import { AddedHistoryComponent } from './components/list/added-history/added-history.component';
+import { AuthorSmallItemComponent } from './components/author/author-small-item/author-small-item.component';
 
 
 @NgModule({
@@ -69,7 +70,8 @@ import { AddedHistoryComponent } from './components/list/added-history/added-his
     AuthorDetailComponent,
     UserDetailComponent,
     AddedItemComponent,
-    AddedHistoryComponent
+    AddedHistoryComponent,
+    AuthorSmallItemComponent
   ],
   imports: [
     BrowserModule,

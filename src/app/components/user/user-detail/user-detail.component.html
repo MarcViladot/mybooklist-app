@@ -1,7 +1,7 @@
 <h4 class="header-text">{{user?.username}}'s Profile</h4>
 
 <div class="row">
-  <div class="col-lg-2 b">
+  <div class="col-lg-2">
     <img src={{user?.avatar}} class="cover"/>
 
     <div class="fullw-margin">
@@ -41,81 +41,113 @@
 
   </div>
 
-  <div class="col-lg-10 b">
-    <div class="row">
-      <div class="col-lg-6 b">
-        <h5 class="spacing">Book Stats</h5>
-        <div fxLayout="column" *ngIf="stats?.reading !== undefined">
-          <div fxLayout="row" style="margin-bottom: 5px">
-            <span><b>Days:</b> {{stats.days | number:'1.1-1'}}</span>
+  <div class="col-lg-10 ">
+    <div fxLayout="column">
+      <div class="row">
+        <div class="col-lg-6 ">
+          <h5 class="spacing">Book Stats</h5>
+          <div fxLayout="column" *ngIf="stats?.reading !== undefined">
+            <div fxLayout="row" style="margin-bottom: 5px">
+              <span><b>Days:</b> {{stats.days | number:'1.1-1'}}</span>
+              <div fxFlex></div>
+              <span class="float-right"><b>Mean Score:</b> {{stats.score | number:'1.1-2'}}</span>
+            </div>
+            <!--<span class="float-right">Mean Score: {{stats.score}}</span>-->
+            <div class="progress spacing" style="height: 25px">
+              <div class="progress-bar" role="progressbar" [style.width]="stats.reading.percentage + '%'"
+                   style="background-color: #2DB039" [attr.aria-valuenow]="stats.reading.percentage"></div>
+
+              <div class="progress-bar" role="progressbar" [style.width]="stats.completed.percentage + '%'"
+                   style="background-color: #26448F" [attr.aria-valuenow]="stats.completed.percentage"></div>
+
+              <div class="progress-bar" role="progressbar" [style.width]="stats.hold.percentage + '%'"
+                   style="background-color: #F9D456" [attr.aria-valuenow]="stats.hold.percentage"></div>
+
+              <div class="progress-bar" role="progressbar" [style.width]="stats.dropped.percentage + '%'"
+                   style="background-color: #A12F31" [attr.aria-valuenow]="stats.dropped.percentage"></div>
+
+              <div class="progress-bar" role="progressbar" [style.width]="stats.plan.percentage + '%'"
+                   style="background-color: #C3C3C3" [attr.aria-valuenow]="stats.plan.percentage"></div>
+            </div>
+
+            <div class="row">
+              <div class="col-md-6">
+                <table style="width: 60%">
+                  <tbody>
+                  <tr *ngFor="let s of status">
+                    <td>
+                      <span class="dot" [style.background-color]="s.color"></span>
+                    </td>
+                    <th>
+                      <span>&nbsp;{{s.status}}:</span>
+                    </th>
+                    <td>
+                      <span>{{s.entries}}</span>
+                    </td>
+                  </tr>
+                  </tbody>
+                </table>
+              </div>
+
+              <div class="col-md-6">
+                <table style="width: 80%">
+                  <tbody>
+                  <tr>
+                    <th>Total Books:</th>
+                    <td>{{stats?.entries}}</td>
+                  </tr>
+                  <tr>
+                    <th>Total Pages:</th>
+                    <td>{{stats?.pages}}</td>
+                  </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+        <div class="col-lg-6">
+          <div fxLayout="row">
+            <h5 class="spacing">Last Book Updates</h5>
             <div fxFlex></div>
-            <span class="float-right"><b>Mean Score:</b> {{stats.score | number:'1.1-2'}}</span>
+            <span class="float-right cursor-text" (click)="openHistory()">All</span>
           </div>
-          <!--<span class="float-right">Mean Score: {{stats.score}}</span>-->
-          <div class="progress spacing" style="height: 25px">
-            <div class="progress-bar" role="progressbar" [style.width]="stats.reading.percentage + '%'"
-                 style="background-color: #2DB039" [attr.aria-valuenow]="stats.reading.percentage"></div>
-
-            <div class="progress-bar" role="progressbar" [style.width]="stats.completed.percentage + '%'"
-                 style="background-color: #26448F" [attr.aria-valuenow]="stats.completed.percentage"></div>
-
-            <div class="progress-bar" role="progressbar" [style.width]="stats.hold.percentage + '%'"
-                 style="background-color: #F9D456" [attr.aria-valuenow]="stats.hold.percentage"></div>
-
-            <div class="progress-bar" role="progressbar" [style.width]="stats.dropped.percentage + '%'"
-                 style="background-color: #A12F31" [attr.aria-valuenow]="stats.dropped.percentage"></div>
-
-            <div class="progress-bar" role="progressbar" [style.width]="stats.plan.percentage + '%'"
-                 style="background-color: #C3C3C3" [attr.aria-valuenow]="stats.plan.percentage"></div>
+          <div *ngFor="let added of user?.addeds; let i = index">
+            <app-added-item *ngIf="i < 3" [added]="added"></app-added-item>
           </div>
-
-          <div class="row">
-            <div class="col-md-6">
-              <table style="width: 60%">
-                <tbody>
-                <tr *ngFor="let s of status">
-                  <td>
-                    <span class="dot" [style.background-color]="s.color"></span>
-                  </td>
-                  <th>
-                    <span>&nbsp;{{s.status}}:</span>
-                  </th>
-                  <td>
-                    <span>{{s.entries}}</span>
-                  </td>
-                </tr>
-                </tbody>
-              </table>
-            </div>
-
-            <div class="col-md-6">
-              <table style="width: 80%">
-                <tbody>
-                <tr>
-                  <th>Total Books:</th>
-                  <td>{{stats?.entries}}</td>
-                </tr>
-                <tr>
-                  <th>Total Pages:</th>
-                  <td>{{stats?.pages}}</td>
-                </tr>
-                </tbody>
-              </table>
-            </div>
-          </div>
-
         </div>
       </div>
 
-      <div class="col-lg-6 b">
-        <div fxLayout="row">
-        <h5 class="spacing">Last Book Updates</h5>
-          <div fxFlex></div>
-          <span class="float-right cursor-text" (click)="openHistory()">All</span>
+      <div class="row">
+        <div class="col-lg-6 row">
+          <div class="col-lg-6 ">
+            <h5>Favourite Books</h5>
+            <div *ngFor="let book of user?.books|slice:0:showB let i=index">
+              <app-book-small-item [book]="book"></app-book-small-item>
+              <button *ngIf="i==3 && showB == 4" (click)="showB = user?.books.length" class="more-button"><i
+                class="fa fa-fw fa-chevron-circle-down" aria-hidden="true"></i>More
+              </button>
+              <button *ngIf="i == user?.books.length -1 && showB == user?.books.length" (click)="showB = 4"
+                      class="more-button"><i class="fa fa-fw fa-chevron-circle-up" aria-hidden="true"></i>Less
+              </button>
+            </div>
+          </div>
+          <div class="col-lg-6">
+            <h5>Favourite Authors</h5>
+            <div *ngFor="let author of user?.authors|slice:0:showA let i=index">
+              <app-author-small-item [author]="author"></app-author-small-item>
+              <button *ngIf="i==3 && showA == 4" (click)="showA = user?.authors.length" class="more-button"><i
+                class="fa fa-fw fa-chevron-circle-down" aria-hidden="true"></i>More
+              </button>
+              <button *ngIf="i == user?.authors.length -1 && showA == user?.authors.length" (click)="showA = 4"
+                      class="more-button"><i class="fa fa-fw fa-chevron-circle-up" aria-hidden="true"></i>Less
+              </button>
+            </div>
+          </div>
         </div>
-        <div *ngFor="let added of user?.addeds; let i = index">
-          <app-added-item *ngIf="i < 3" [added]="added"></app-added-item>
-        </div>
+
       </div>
     </div>
   </div>

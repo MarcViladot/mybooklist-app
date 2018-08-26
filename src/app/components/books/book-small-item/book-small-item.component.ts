@@ -16,8 +16,8 @@ export class BookSmallItemComponent implements OnInit {
   ngOnInit() {
   }
 
-  goToBook(id: number): void {
-    this.router.navigate(['/books/' + id]);
+  goToBook(): void {
+    this.router.navigate(['/books/' + this.book.id]);
   }
 
 }

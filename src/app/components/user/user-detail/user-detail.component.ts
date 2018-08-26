@@ -38,6 +38,9 @@ export class UserDetailComponent implements OnInit {
 
   status: any;
 
+  showA = 4;
+  showB = 4;
+
   constructor(private router: Router,
               private activatedRoute: ActivatedRoute,
               private userService: UserService,

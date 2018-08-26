@@ -1,1 +1,10 @@
-<img src={{book.cover}} class="cover" (click)="goToBook(book.id)" title={{book.name}} />
+<div fxLayout="row">
+  <img src={{book.cover}} class="cover" (click)="goToBook()" title={{book.name}}/>
+  <div fxLayout="column" class="full-width">
+    <p class="cursor-text" (click)="goToBook()">{{book.name}}</p>
+    <p class="subtext">{{book.year}}</p>
+    <p class="subtext">{{book.pages}} Pages</p>
+  </div>
+</div>
+
+
