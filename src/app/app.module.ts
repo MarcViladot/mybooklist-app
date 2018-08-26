@@ -43,6 +43,7 @@ import { UserListComponent } from './components/user/user-list/user-list.compone
 import { AuthorDetailComponent } from './components/author/author-detail/author-detail.component';
 import {AuthorService} from './services/author.service';
 import {EditorModule} from 'primeng/primeng';
+import { UserDetailComponent } from './components/user/user-detail/user-detail.component';
 
 
 @NgModule({
@@ -63,7 +64,8 @@ import {EditorModule} from 'primeng/primeng';
     EditListDialogComponent,
     BookListItemComponent,
     UserListComponent,
-    AuthorDetailComponent
+    AuthorDetailComponent,
+    UserDetailComponent
   ],
   imports: [
     BrowserModule,

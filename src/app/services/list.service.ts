@@ -33,11 +33,10 @@ export class ListService {
     });
   }
 
-  getListByUser(): Observable<any> {
-    return this.http.get<Added>(this.urlList, {
+  getListByUser(id: number): Observable<any> {
+    return this.http.get<Added>(this.urlList + id, {
       headers: new HttpHeaders({
-        'Accept': 'application/json',
-        'Authorization': AuthenticationService.getAuthToken()
+        'Accept': 'application/json'
       })
     });
   }

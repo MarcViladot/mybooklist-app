@@ -1,0 +1,115 @@
+<h4 class="header-text">{{user?.username}}'s Profile</h4>
+
+<div class="row">
+  <div class="col-lg-2 b">
+    <img src={{user?.avatar}} class="cover"/>
+
+    <div class="fullw-margin">
+      <p><b>Gender:</b> <span class="float-right">{{user?.gender}}</span></p>
+      <p><b>Birthday:</b> <span class="float-right">{{user?.born | date:'longDate'}}</span></p>
+      <p><b>Joined:</b> <span class="float-right">{{user?.created_at | date:'longDate'}}</span></p>
+    </div>
+
+    <div class="fullw-margin" *ngIf="!isCurrentUser">
+      <button mat-raised-button color="warn" class="full-width" *ngIf="!user?.following" (click)="follow()">Follow <i
+        class="fa fa-user-plus" aria-hidden="true"></i></button>
+      <button mat-raised-button color="warn" class="full-width" *ngIf="user?.following" (click)="unfollow()">Unfollow <i
+        class="fa fa-user-times" aria-hidden="true"></i></button>
+    </div>
+
+    <button mat-raised-button color="primary" class="fullw-margin" [routerLink]="['/user/' + user?.id + '/booklist']">
+      Booklist
+    </button>
+
+
+    <div class="follows">
+      <p><b>Following</b> <span class="float-right cursor-text">All ({{user?.followings.length}})</span></p>
+      <span *ngFor="let u of user?.followings; let i = index">
+        <img *ngIf="i < 9" src={{u.avatar}} title={{u.username}} class="user-img-small"
+             [routerLink]="['/user/' + u.id]"/>
+      </span>
+    </div>
+
+    <div class="follows">
+      <p><b>Followers</b> <span class="float-right cursor-text">All ({{user?.followers.length}})</span></p>
+      <span *ngFor="let u of user?.followers; let i = index">
+        <img *ngIf="i < 9" src={{u.avatar}} title={{u.username}} class="user-img-small"
+             [routerLink]="['/user/' + u.id]"/>
+      </span>
+    </div>
+
+
+  </div>
+
+  <div class="col-lg-10 b">
+    <div class="row">
+      <div class="col-lg-6 b">
+        <h5 class="spacing">Book Stats</h5>
+        <div fxLayout="column" *ngIf="stats?.reading !== undefined">
+          <div fxLayout="row" style="margin-bottom: 5px">
+            <span><b>Days:</b> {{stats.days | number:'1.1-1'}}</span>
+            <div fxFlex></div>
+            <span class="float-right"><b>Mean Score:</b> {{stats.score | number:'1.1-2'}}</span>
+          </div>
+          <!--<span class="float-right">Mean Score: {{stats.score}}</span>-->
+          <div class="progress spacing" style="height: 25px">
+            <div class="progress-bar" role="progressbar" [style.width]="stats.reading.percentage + '%'"
+                 style="background-color: #2DB039" [attr.aria-valuenow]="stats.reading.percentage"></div>
+
+            <div class="progress-bar" role="progressbar" [style.width]="stats.completed.percentage + '%'"
+                 style="background-color: #26448F" [attr.aria-valuenow]="stats.completed.percentage"></div>
+
+            <div class="progress-bar" role="progressbar" [style.width]="stats.hold.percentage + '%'"
+                 style="background-color: #F9D456" [attr.aria-valuenow]="stats.hold.percentage"></div>
+
+            <div class="progress-bar" role="progressbar" [style.width]="stats.dropped.percentage + '%'"
+                 style="background-color: #A12F31" [attr.aria-valuenow]="stats.dropped.percentage"></div>
+
+            <div class="progress-bar" role="progressbar" [style.width]="stats.plan.percentage + '%'"
+                 style="background-color: #C3C3C3" [attr.aria-valuenow]="stats.plan.percentage"></div>
+          </div>
+
+          <div class="row">
+            <div class="col-md-6">
+              <table style="width: 60%">
+                <tbody>
+                <tr *ngFor="let s of status">
+                  <td>
+                    <span class="dot" [style.background-color]="s.color"></span>
+                  </td>
+                  <th>
+                    <span>&nbsp;{{s.status}}:</span>
+                  </th>
+                  <td>
+                    <span>{{s.entries}}</span>
+                  </td>
+                </tr>
+                </tbody>
+              </table>
+            </div>
+
+            <div class="col-md-6">
+              <table style="width: 80%">
+                <tbody>
+                <tr>
+                  <th>Total Books:</th>
+                  <td>{{stats?.entries}}</td>
+                </tr>
+                <tr>
+                  <th>Total Pages:</th>
+                  <td>{{stats?.pages}}</td>
+                </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <div class="col-lg-6 b">
+        <h5 class="spacing">Last Book Updates</h5>
+      </div>
+    </div>
+  </div>
+</div>

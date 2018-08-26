@@ -45,7 +45,7 @@ export class UserListComponent implements OnInit {
   }
 
   setList(): void {
-    this.listService.getListByUser().subscribe(
+    this.listService.getListByUser(this.id).subscribe(
       res => {
         this.reading = res['Reading'];
         this.completed = res['Completed'];

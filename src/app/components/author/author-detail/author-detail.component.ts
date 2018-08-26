@@ -4,6 +4,8 @@ import {AuthorService} from '../../../services/author.service';
 import {Author} from '../../../interfaces/author';
 import {BookService} from '../../../services/book.service';
 import {AuthenticationService} from '../../../services/authentication.service';
+import {SigninComponent} from '../../user/signin/signin.component';
+import {MatDialog} from '@angular/material';
 
 @Component({
   selector: 'app-author-detail',
@@ -21,7 +23,8 @@ export class AuthorDetailComponent implements OnInit {
               private activatedRoute: ActivatedRoute,
               private authorService: AuthorService,
               private bookService: BookService,
-              private authService: AuthenticationService) {
+              private authService: AuthenticationService,
+              private dialog: MatDialog) {
     this.activatedRoute.paramMap.subscribe(params => {
       this.id = +params.get('id');
     });
@@ -47,13 +50,27 @@ export class AuthorDetailComponent implements OnInit {
     }
   }
 
+  openDialogSignIn(): void {
+    let dialogRef = this.dialog.open(SigninComponent, {
+      height: 'auto',
+      width: '50%'
+    });
+    dialogRef.afterClosed().subscribe(response => {
+      dialogRef = null;
+    });
+  }
+
   addFavourite() {
-    this.authorService.postFavouriteAuthor(AuthenticationService.getCurrentUser().id, this.id).subscribe(
-      res => {
-        this.isFavourite = true;
-        this.favouriteId = res.id;
-        this.author.popularity++;
-      });
+    if (!AuthenticationService.isLogged()) {
+      this.openDialogSignIn();
+    } else {
+      this.authorService.postFavouriteAuthor(AuthenticationService.getCurrentUser().id, this.id).subscribe(
+        res => {
+          this.isFavourite = true;
+          this.favouriteId = res.id;
+          this.author.popularity++;
+        });
+    }
   }
 
   removeFavourite() {

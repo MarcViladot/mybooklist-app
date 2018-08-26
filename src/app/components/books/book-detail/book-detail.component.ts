@@ -184,6 +184,10 @@ export class BookDetailComponent implements OnInit {
     this.router.navigate(['/genre/' + id]);
   }
 
+  goToBook(id: number): void {
+    this.router.navigate(['/books/' + id]);
+  }
+
   goToAuthor(id: number): void {
     this.router.navigate(['/author/' + id]);
   }

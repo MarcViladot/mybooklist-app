@@ -1,9 +1,9 @@
-<h4 style="padding-bottom: 10px">{{author?.name}}</h4>
+<h4 class="header-text">{{author?.name}}</h4>
 <div class="row">
   <div class="col-lg-2">
-    <img src={{author?.photo}} class="photo"/>
-    <button *ngIf="!isFavourite" mat-raised-button class="photo" color="primary" (click)="addFavourite()">Add to Favourites</button>
-    <button *ngIf="isFavourite" mat-stroked-button class="photo" color="primary" (click)="removeFavourite()">Remove from Favourites</button>
+    <img src={{author?.photo}} class="fullw-margin"/>
+    <button *ngIf="!isFavourite" mat-raised-button class="fullw-margin" color="warn" (click)="addFavourite()">Add to Favourites</button>
+    <button *ngIf="isFavourite" mat-stroked-button class="fullw-margin" color="warn" (click)="removeFavourite()">Remove from Favourites</button>
     <br>
     <p><b>Birthday: </b>{{author?.born | date:'longDate'}}</p>
     <p><b>Favourties: </b>{{author?.popularity}}</p>
@@ -11,6 +11,7 @@
     <p class="biography">{{author?.biography}}</p>
   </div>
   <div class="col-lg-9">
+    <h5>{{author?.name}}'s books</h5>
     <table class="table-striped">
       <thead>
       <tr>

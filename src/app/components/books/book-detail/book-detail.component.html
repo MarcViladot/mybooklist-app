@@ -1,4 +1,4 @@
-<h4 style="padding-bottom: 10px">{{book?.name}}</h4>
+<h4 class="header-text">{{book?.name}}</h4>
 <div class="row">
 
   <div class="col-lg-3 col">
@@ -89,7 +89,7 @@
               <div dragScroll [drag-scroll-y-disabled]="true" style="height: 100%">
                 <div class="inline">
               <span *ngFor="let b of book?.serie.books">
-                <app-book-small-item [book]="b" class="book-small" *ngIf="book?.id != b.id"></app-book-small-item>
+                <img src={{b.cover}} class="author-photo" title={{b.name}} (click)="goToBook(b.id)"/>
               </span>
                 </div>
               </div>

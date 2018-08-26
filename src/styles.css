@@ -48,6 +48,20 @@ body {
   border: 1px solid #000000;
 }
 
+.cover {
+  max-width: 100%;
+  margin-bottom: 10px;
+}
+
+.fullw-margin {
+  margin-bottom: 10px;
+  width: 100%;
+}
+
+.spacing {
+  margin-bottom: 10px;
+}
+
 .cursor-text {
   color: #3F51B5;
 }
@@ -55,4 +69,8 @@ body {
 .cursor-text:hover {
   cursor: pointer;
   color: #32a7d1;
+}
+
+.header-text {
+  padding-bottom: 10px;
 }
