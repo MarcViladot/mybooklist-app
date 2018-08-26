@@ -64,6 +64,21 @@ export class BookDetailComponent implements OnInit {
     this.changeLogged(AuthenticationService.isLogged());
     this.getFavourite();
     this.getAdded();
+    this.initDisqus();
+  }
+
+  initDisqus() {
+    const disqus_config = function () {
+      const self = this;
+      this.page.url = self.router.url;
+      this.page.identifier = self.id;
+    };
+    (function() {
+      const d = document, s = d.createElement('script');
+      s.src = 'https://mybooklist.disqus.com/embed.js';
+      s.setAttribute('data-timestamp', '' + new Date());
+      (d.head || d.body).appendChild(s);
+    })();
   }
 
   postReview(): void {
