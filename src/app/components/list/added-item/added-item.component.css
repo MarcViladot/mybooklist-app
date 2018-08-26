@@ -1,0 +1,13 @@
+mat-card {
+  /*  height: 350px;*/
+  padding: 10px!important;
+  margin-bottom: 15px;
+}
+
+.img-item {
+  height: 100px;
+}
+
+p {
+  height: min-content;
+}

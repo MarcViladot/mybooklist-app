@@ -44,6 +44,8 @@ import { AuthorDetailComponent } from './components/author/author-detail/author-
 import {AuthorService} from './services/author.service';
 import {EditorModule} from 'primeng/primeng';
 import { UserDetailComponent } from './components/user/user-detail/user-detail.component';
+import { AddedItemComponent } from './components/list/added-item/added-item.component';
+import { AddedHistoryComponent } from './components/list/added-history/added-history.component';
 
 
 @NgModule({
@@ -65,7 +67,9 @@ import { UserDetailComponent } from './components/user/user-detail/user-detail.c
     BookListItemComponent,
     UserListComponent,
     AuthorDetailComponent,
-    UserDetailComponent
+    UserDetailComponent,
+    AddedItemComponent,
+    AddedHistoryComponent
   ],
   imports: [
     BrowserModule,
@@ -102,7 +106,8 @@ import { UserDetailComponent } from './components/user/user-detail/user-detail.c
     SigninComponent,
     SignupComponent,
     AddListDialogComponent,
-    EditListDialogComponent
+    EditListDialogComponent,
+    AddedHistoryComponent
   ],
   providers: [BookService, AuthenticationService, ReviewService, ListService, AuthorService],
   bootstrap: [AppComponent]

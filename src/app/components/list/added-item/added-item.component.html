@@ -1,0 +1,27 @@
+<mat-card>
+  <div fxLayout="row">
+    <img src={{added?.book.cover}} class="img-item"/>&nbsp;
+    <div fxLayout="column" class="full-width">
+      <p class="cursor-text" [routerLink]="['/books/' + added?.book.id]">{{added?.book.name}}</p>
+      <div class="progress ">
+        <div class="progress-bar" role="progressbar" [style.width]="added?.percentage + '%'"
+             [style.background-color]="getColor()" [attr.aria-valuenow]="added?.percentage"></div>
+      </div>
+      <div fxLayout="row" style="margin-top: 20px">
+        <div>
+          <span>{{added?.status}} {{added?.progress}}/{{added?.book.pages}}</span>
+          <span> · Scored: {{added?.score}}</span>
+        </div>
+        <div fxFlex></div>
+        <span>{{added?.update | date:'longDate'}}</span>
+      </div>
+    </div>
+  </div>
+</mat-card>
+
+<!--<div class="progress">
+  <div class="progress-bar" role="progressbar" [style.width]="added?.percentage + '%'"
+       [style.background-color]="getColor()" [attr.aria-valuenow]="added?.percentage"></div>
+</div>-->
+
+

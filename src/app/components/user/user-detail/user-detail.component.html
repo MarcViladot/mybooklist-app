@@ -108,7 +108,14 @@
       </div>
 
       <div class="col-lg-6 b">
+        <div fxLayout="row">
         <h5 class="spacing">Last Book Updates</h5>
+          <div fxFlex></div>
+          <span class="float-right cursor-text" (click)="openHistory()">All</span>
+        </div>
+        <div *ngFor="let added of user?.addeds; let i = index">
+          <app-added-item *ngIf="i < 3" [added]="added"></app-added-item>
+        </div>
       </div>
     </div>
   </div>

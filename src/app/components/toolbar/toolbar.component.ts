@@ -81,6 +81,10 @@ export class ToolbarComponent implements OnInit {
     });
   }
 
+  goToCurrentUser(): void {
+    this.router.navigate(['/user/' + AuthenticationService.getCurrentUser().id]);
+  }
+
   search(search: string): void {
     this.router.navigate(['/search/' + search]);
   }

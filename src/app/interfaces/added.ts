@@ -6,4 +6,6 @@ export interface Added {
   status: string;
   score: number;
   book?: Book;
+  percentage: number;
+  update: Date;
 }

@@ -5,6 +5,7 @@ import {UserService} from '../../../services/user.service';
 import {AuthenticationService} from '../../../services/authentication.service';
 import {SigninComponent} from '../signin/signin.component';
 import {MatDialog} from '@angular/material';
+import {AddedHistoryComponent} from '../../list/added-history/added-history.component';
 
 
 export interface Status {
@@ -49,6 +50,7 @@ export class UserDetailComponent implements OnInit {
       this.id = +params.get('id');
     });
     this.authService.getLoggedIn.subscribe(res => this.setUser());
+
   }
 
   ngOnInit() {
@@ -59,7 +61,9 @@ export class UserDetailComponent implements OnInit {
 
   setUser(): void {
     this.userService.getUserById(this.id).subscribe(
-      user => this.user = user
+      user => {
+        this.user = user;
+      }
     );
   }
 
@@ -110,5 +114,17 @@ export class UserDetailComponent implements OnInit {
         ];
       }
     );
+  }
+
+  openHistory(): void {
+    let dialogRef = this.dialog.open(AddedHistoryComponent, {
+      height: '90%',
+      width: '40%'
+    });
+    dialogRef.componentInstance.addeds = this.user.addeds;
+    dialogRef.componentInstance.username = this.user.username;
+    dialogRef.afterClosed().subscribe(response => {
+      dialogRef = null;
+    });
   }
 }
