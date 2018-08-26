@@ -32,6 +32,25 @@
     </div>
   </div>
 
+  <div fxLayout="row">
+    <div class="col-md-6">
+      <mat-form-field class="full-width">
+        <input matInput [matDatepicker]="picker" placeholder="Born Date" formControlName="born">
+        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+      </mat-form-field>
+    </div>
+    <div class="col-md-6">
+      <mat-form-field class="full-width">
+        <mat-select placeholder="Gender" formControlName="gender">
+          <mat-option *ngFor="let gender of genders" [value]="gender">
+            {{gender}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+  </div>
+
 
   <br>
   <div *ngIf="errorShow" class="alert alert-danger col-md-12" role="alert">

@@ -12,8 +12,21 @@ import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import {LayoutModule} from '@angular/cdk/layout';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import {
-  MatToolbarModule, MatButtonModule, MatIconModule, MatDialogModule, MatInputModule, MatFormFieldModule, MatCardModule,
-  MatChipsModule, MatTabsModule, MatAutocompleteModule, MatSelectModule, MatSortModule, MatTableModule, MatSnackBarModule
+  MatToolbarModule,
+  MatButtonModule,
+  MatIconModule,
+  MatDialogModule,
+  MatInputModule,
+  MatFormFieldModule,
+  MatCardModule,
+  MatChipsModule,
+  MatTabsModule,
+  MatAutocompleteModule,
+  MatSelectModule,
+  MatSortModule,
+  MatTableModule,
+  MatSnackBarModule,
+  MatDatepickerModule, MatNativeDateModule
 } from '@angular/material';
 
 import { ToolbarComponent } from './components/toolbar/toolbar.component';
@@ -102,7 +115,9 @@ import { AuthorSmallItemComponent } from './components/author/author-small-item/
     MatSelectModule,
     MatSnackBarModule,
     MatChipsModule,
-    MatAutocompleteModule
+    MatAutocompleteModule,
+    MatDatepickerModule,
+    MatNativeDateModule
   ],
   entryComponents: [
     SigninComponent,

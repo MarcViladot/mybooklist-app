@@ -15,6 +15,8 @@ export class SignupComponent implements OnInit {
   hide = true;
   errorShow = false;
 
+  genders = ['Male', 'Female'];
+
   constructor(private fb: FormBuilder,
               private authService: AuthenticationService,
               public dialogRef: MatDialogRef<SignupComponent>,
@@ -24,6 +26,8 @@ export class SignupComponent implements OnInit {
       username: ['', Validators.required],
       password: ['', Validators.required],
       passwordConfirmation: ['', Validators.required],
+      gender: ['', Validators.required],
+      born: ['', Validators.required]
       // TODO VALIDATORS
     });
   }
@@ -36,7 +40,9 @@ export class SignupComponent implements OnInit {
       'email': this.signupForm.get('email').value,
       'username': this.signupForm.get('username').value,
       'password': this.signupForm.get('password').value,
-      'password_confirmation': this.signupForm.get('passwordConfirmation').value
+      'password_confirmation': this.signupForm.get('passwordConfirmation').value,
+      'born': this.signupForm.get('born').value,
+      'gender': this.signupForm.get('gender').value
     };
 
     this.authService.signUp(data).subscribe(
