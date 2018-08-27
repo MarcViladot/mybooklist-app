@@ -89,7 +89,7 @@
               <div dragScroll [drag-scroll-y-disabled]="true" style="height: 100%">
                 <div class="inline">
               <span *ngFor="let b of book?.serie.books">
-                <img src={{b.cover}} class="author-photo" title={{b.name}} (click)="goToBook(b.id)"/>
+                <img src={{b.cover}}  *ngIf="b.id !== id" class="author-photo" title={{b.name}} (click)="goToBook(b.id)" />
               </span>
                 </div>
               </div>
@@ -104,11 +104,8 @@
 
           <div class="book-reviews">
             <h3>Reviews</h3>
-            <div *ngFor="let review of book?.reviews; let i = index" style="margin-bottom: 20px">
-              <app-review-item [review]="review" *ngIf="i < 4"></app-review-item>
-            </div>
-            <h4 *ngIf="!userHasReview && logged" class="cursor-text" (click)="writeReview = true">Write Review</h4>
-            <div class="full-width" *ngIf="writeReview && logged">
+            <button class="button-review" *ngIf="!userHasReview && logged" mat-raised-button (click)="writeReview = !writeReview">Write Review</button>
+            <div class="fullw-margin" *ngIf="writeReview && logged && !userHasReview">
               <p-editor [(ngModel)]="text" [ngModelOptions]="{standalone: true}" [style]="{'height':'320px'}">
                 <p-header>
                   <span class="ql-formats">
@@ -120,9 +117,12 @@
                 </p-header>
               </p-editor>
             </div>
-          </div>
 
-          <div style="height: 800px"></div>
+            <div *ngFor="let review of book?.reviews; let i = index" style="margin-bottom: 20px">
+              <app-review-item [review]="review" *ngIf="i < 4"></app-review-item>
+            </div>
+
+          </div>
 
 
         </div>

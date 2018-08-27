@@ -43,7 +43,7 @@ export class UserService {
   }
 
   unfollowUser(id: number): Observable<any> {
-    return this.http.post<any>(this.url + 'unfollow/' + id, null, {
+    return this.http.delete<any>(this.url + 'unfollow/' + id, {
       headers: new HttpHeaders({
         'Accept': 'application/json',
         'Authorization': AuthenticationService.getAuthToken()

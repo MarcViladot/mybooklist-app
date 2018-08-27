@@ -11,18 +11,14 @@
   /*border: 1px solid #000000;*/
 }
 
+
+.sp p {
+  margin-bottom: 8px;
+}
+
 .content {
   width: 100%;
   font-size: 0.8em;
-}
-
-.cursor-text {
-  color: #3F51B5;
-}
-
-.cursor-text:hover {
-  cursor: pointer;
-  color: #32a7d1;
 }
 
 .d p{
@@ -35,11 +31,11 @@
   width: auto;
 }
 
-.avatar:hover {
-  opacity: 0.8;
-  cursor: pointer;
+.subtext {
+  font-size: 0.65em;
 }
 
-.username {
-  color: #000;
+.subtext-gray {
+  font-size: 0.65em;
+  color: gray;
 }

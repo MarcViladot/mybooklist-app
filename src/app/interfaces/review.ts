@@ -6,4 +6,6 @@ export interface Review {
   score: number;
   user: User;
   created_at: Date;
+  upvotes: number;
+  upvoted: boolean;
 }

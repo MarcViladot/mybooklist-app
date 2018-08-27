@@ -1,9 +1,12 @@
 <mat-card class="review-card">
-  <div class="header" fxLayout="row">
-    <div align="left">
-      <img src={{review.user.avatar}} class="avatar"/>
-      <b class="cursor-text username"> {{review.user.username}}</b>
-    </div>
+  <div class="header" fxLayout="row" align="left">
+      <img src={{review.user.avatar}} class="avatar"/> &nbsp;
+      <div fxLayout="column" class="full-width sp">
+        <p class="cursor-text" [routerLink]="['/user/' +review.user.id]">{{review.user.username}}</p>
+        <p class="subtext-gray"><b>{{review.upvotes}}</b> Users found this review helpful</p>
+        <p *ngIf="!review.upvoted" class="subtext cursor-text" (click)="upvote()"><i class="fa fa-fw fa-arrow-circle-up" aria-hidden="true"></i>Helpful</p>
+        <p *ngIf="review.upvoted" class="subtext cursor-text" (click)="downvote()"><i class="fa fa-fw fa-arrow-circle-down" aria-hidden="true"></i>Undo</p>
+      </div>
     <div fxFlex></div>
     <div class="d" align="right">
       <p>{{review.created_at | date: 'mediumDate'}}</p>

@@ -13,7 +13,7 @@
     <div class="fullw-margin" *ngIf="!isCurrentUser">
       <button mat-raised-button color="warn" class="full-width" *ngIf="!user?.following" (click)="follow()">Follow <i
         class="fa fa-user-plus" aria-hidden="true"></i></button>
-      <button mat-raised-button color="warn" class="full-width" *ngIf="user?.following" (click)="unfollow()">Unfollow <i
+      <button mat-stroked-button color="warn" class="full-width" *ngIf="user?.following" (click)="unfollow()">Unfollow <i
         class="fa fa-user-times" aria-hidden="true"></i></button>
     </div>
 
@@ -120,8 +120,10 @@
         </div>
       </div>
 
+      <br>
       <div class="row">
         <div class="col-lg-6 row">
+
           <div class="col-lg-6 ">
             <h5>Favourite Books</h5>
             <div *ngFor="let book of user?.books|slice:0:showB let i=index">
@@ -134,6 +136,7 @@
               </button>
             </div>
           </div>
+
           <div class="col-lg-6">
             <h5>Favourite Authors</h5>
             <div *ngFor="let author of user?.authors|slice:0:showA let i=index">
@@ -147,6 +150,10 @@
             </div>
           </div>
         </div>
+        <!--<div class="col-lg-6 row">
+          <h5 style="height: min-content">Comments</h5>
+          <div id="disqus_thread" class="full-width"></div>
+        </div>-->
 
       </div>
     </div>

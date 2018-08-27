@@ -40,6 +40,11 @@ p {
   display: inline;
 }
 
+.button-review {
+  margin-bottom: 10px;
+  width: 100%;
+}
+
 .author-photo {
   height: 80%;
   width: auto;

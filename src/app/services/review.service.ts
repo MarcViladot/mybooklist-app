@@ -54,4 +54,26 @@ export class ReviewService {
       })
     });
   }
+
+  upvote(id: number): Observable<any> {
+    return this.http.post<any>(this.url + 'upvote/' + id, null, {
+      headers: new HttpHeaders({
+        'Accept': 'application/json',
+        'Authorization': AuthenticationService.getAuthToken()
+      })
+    }).pipe(
+      catchError(this.handleError)
+    );
+  }
+
+  downvote(id: number): Observable<any> {
+    return this.http.delete<any>(this.url + 'downvote/' + id, {
+      headers: new HttpHeaders({
+        'Accept': 'application/json',
+        'Authorization': AuthenticationService.getAuthToken()
+      })
+    }).pipe(
+      catchError(this.handleError)
+    );
+  }
 }

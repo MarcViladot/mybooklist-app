@@ -60,6 +60,21 @@ export class UserDetailComponent implements OnInit {
     this.setUser();
     this.getStatus();
     this.isCurrentUser = this.id === AuthenticationService.getCurrentUser().id;
+    this.initDisqus();
+  }
+
+  initDisqus() {
+    const disqus_config = function () {
+      const self = this;
+      this.page.url = self.router.url;
+      this.page.identifier = self.id;
+    };
+    (function() {
+      const d = document, s = d.createElement('script');
+      s.src = 'https://mybooklist.disqus.com/embed.js';
+      s.setAttribute('data-timestamp', '' + new Date());
+      (d.head || d.body).appendChild(s);
+    })();
   }
 
   setUser(): void {
