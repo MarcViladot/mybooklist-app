@@ -1,0 +1,32 @@
+mat-card {
+  /*  height: 350px;*/
+  padding: 10px!important;
+  margin-bottom: 15px;
+}
+
+.cover {
+  height: 100px;
+  margin-right: 3px;
+}
+
+p {
+  margin-bottom: 5px!important;
+}
+
+.header {
+  height: 100px;
+  margin-bottom: 10px;
+}
+
+.subtext {
+  font-size: .8em;
+}
+
+.content {
+  margin-bottom: 10px;
+}
+
+.footer {
+  font-size: .6em;
+  color: gray;
+}

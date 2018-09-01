@@ -45,6 +45,11 @@ p {
   width: 100%;
 }
 
+.container-list {
+  width: 90%;
+  margin-top: 5px;
+}
+
 .author-photo {
   height: 80%;
   width: auto;

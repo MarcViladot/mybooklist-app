@@ -60,6 +60,7 @@ import { UserDetailComponent } from './components/user/user-detail/user-detail.c
 import { AddedItemComponent } from './components/list/added-item/added-item.component';
 import { AddedHistoryComponent } from './components/list/added-history/added-history.component';
 import { AuthorSmallItemComponent } from './components/author/author-small-item/author-small-item.component';
+import { RecommendationItemComponent } from './components/recommendations/recommendation-item/recommendation-item.component';
 
 
 @NgModule({
@@ -84,7 +85,8 @@ import { AuthorSmallItemComponent } from './components/author/author-small-item/
     UserDetailComponent,
     AddedItemComponent,
     AddedHistoryComponent,
-    AuthorSmallItemComponent
+    AuthorSmallItemComponent,
+    RecommendationItemComponent
   ],
   imports: [
     BrowserModule,

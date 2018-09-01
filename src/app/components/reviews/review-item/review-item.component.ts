@@ -10,6 +10,7 @@ import {ReviewService} from '../../../services/review.service';
 export class ReviewItemComponent implements OnInit {
 
   @Input() review: Review;
+  @Input() inUserComponent: boolean;
   textSplit: string;
   showMore = false;
 

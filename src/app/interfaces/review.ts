@@ -1,4 +1,5 @@
 import {User} from './user';
+import { Book } from './book';
 
 export interface Review {
   text: string;
@@ -8,4 +9,5 @@ export interface Review {
   created_at: Date;
   upvotes: number;
   upvoted: boolean;
+  book?: Book;
 }

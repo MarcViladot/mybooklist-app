@@ -1,6 +1,8 @@
 import {Author} from './author';
 import {Book} from './book';
 import {Added} from './added';
+import {Recommendation} from './recommendation';
+import {Review} from './review';
 
 export interface User {
   id: number;
@@ -11,10 +13,11 @@ export interface User {
   gender: string;
   email?: string;
   following?: boolean;
-  // follows?: boolean;
   addeds?: Added[];
   authors?: Author[];
   books?: Book[];
   followings?: User[];
   followers?: User[];
+  recommendations?: Recommendation[];
+  reviews: Review[];
 }

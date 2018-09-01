@@ -3,6 +3,7 @@ import {Genre} from './genre';
 import {Serie} from './serie';
 import {Review} from './review';
 import {Added} from './added';
+import {Recommendation} from './recommendation';
 
 export interface Book {
   id: number;
@@ -21,5 +22,6 @@ export interface Book {
   serie?: Serie;
   reviews: Review[];
   added?: Added;
+  recommendations: Recommendation[];
 
 }

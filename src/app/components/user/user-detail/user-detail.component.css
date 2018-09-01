@@ -34,3 +34,7 @@ p {
 .more-button:hover {
   color: #3F51B5;
 }
+
+.tab-content {
+  margin-top: 20px;
+}

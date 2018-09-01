@@ -131,16 +131,25 @@
       </mat-tab>
       <mat-tab label="Reviews">
         <div>
-          <div align="center">
+          <div align="center" class="container-list">
             <div *ngFor="let review of book?.reviews | paginate: { itemsPerPage: 4, currentPage: p }">
-              <app-review-item [review]="review"></app-review-item>
+              <app-review-item [review]="review" [inUserComponent]="false"></app-review-item>
             </div>
             <pagination-controls (pageChange)="p = $event"></pagination-controls>
           </div>
         </div>
       </mat-tab>
       <mat-tab label="Stats"> Content 3</mat-tab>
-      <mat-tab label="Recommendations"> Content 4</mat-tab>
+      <mat-tab label="Recommendations">
+        <div>
+        <div align="center" class="container-list">
+          <div *ngFor="let rec of book?.recommendations | paginate: { itemsPerPage: 4, currentPage: o }">
+            <app-recommendation-item [recommendation]="rec" [inUserComponent]="false"></app-recommendation-item>
+          </div>
+          <pagination-controls (pageChange)="o = $event"></pagination-controls>
+        </div>
+        </div>
+      </mat-tab>
     </mat-tab-group>
 
 

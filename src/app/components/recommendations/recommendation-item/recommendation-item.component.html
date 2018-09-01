@@ -1,0 +1,38 @@
+<mat-card>
+
+  <div class="row header">
+    <div class="col-md-6">
+      <div fxLayout="row">
+        <img src={{recommendation.recommended.cover}} class="cover"/>
+        <div fxLayout="column" align="left">
+          <p class="subtext">If you liked...</p>
+          <p class="cursor-text" [routerLink]="['books/' + recommendation.recommended.id]">
+            {{recommendation.recommended.name}}</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-6">
+      <div fxLayout="row">
+        <img src={{recommendation.recommending.cover}} class="cover"/>&nbsp;
+        <div fxLayout="column" align="left">
+          <p class="subtext">...then you might like</p>
+          <p class="cursor-text" [routerLink]="['books/' + recommendation.recommending.id]">
+            {{recommendation.recommending.name}}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div align="left" class="subtext content">
+    <p [innerHTML]="recommendation.reasons"></p>
+  </div>
+
+  <div class="footer">
+    <span class="float-left" *ngIf="!inUserComponent">Book recommendation by <span class="cursor-text" [routerLink]="['user/' + recommendation.user.id]">{{recommendation.user.username}}</span></span>
+    <span class="float-right">{{recommendation.created_at | date:'longDate'}}</span>
+  </div>
+  <br>
+
+
+</mat-card>
