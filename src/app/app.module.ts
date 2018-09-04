@@ -61,6 +61,8 @@ import { AddedItemComponent } from './components/list/added-item/added-item.comp
 import { AddedHistoryComponent } from './components/list/added-history/added-history.component';
 import { AuthorSmallItemComponent } from './components/author/author-small-item/author-small-item.component';
 import { RecommendationItemComponent } from './components/recommendations/recommendation-item/recommendation-item.component';
+import { RecommendationNewComponent } from './components/recommendations/recommendation-new/recommendation-new.component';
+import {RecommendationService} from './services/recommendation.service';
 
 
 @NgModule({
@@ -86,7 +88,8 @@ import { RecommendationItemComponent } from './components/recommendations/recomm
     AddedItemComponent,
     AddedHistoryComponent,
     AuthorSmallItemComponent,
-    RecommendationItemComponent
+    RecommendationItemComponent,
+    RecommendationNewComponent
   ],
   imports: [
     BrowserModule,
@@ -128,7 +131,7 @@ import { RecommendationItemComponent } from './components/recommendations/recomm
     EditListDialogComponent,
     AddedHistoryComponent
   ],
-  providers: [BookService, AuthenticationService, ReviewService, ListService, AuthorService],
+  providers: [BookService, AuthenticationService, ReviewService, ListService, AuthorService, RecommendationService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

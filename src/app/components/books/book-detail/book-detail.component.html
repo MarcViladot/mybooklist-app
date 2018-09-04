@@ -5,7 +5,7 @@
     <div style="width: 80%">
 
       <div class="information-row">
-        <img src={{book?.cover}} class="cover"/>
+        <img src={{book?.cover}} class="cover" />
 
 
         <div *ngIf="isInUserList">
@@ -21,11 +21,10 @@
         </div>
 
         <div fxLayout="row" class="buttons">
-          <button mat-stroked-button *ngIf="isInUserList" color="primary" class="full-width" id="left"
-                  (click)="editAdded()">Edit Details
+          <button mat-stroked-button *ngIf="isInUserList" color="primary" class="full-width" id="left" (click)="editAdded()">Edit
+            Details
           </button>
-          <button mat-stroked-button *ngIf="isInUserList" color="warn" class="full-width right" id="right"
-                  (click)="removeAdded()">Remove
+          <button mat-stroked-button *ngIf="isInUserList" color="warn" class="full-width right" id="right" (click)="removeAdded()">Remove
           </button>
         </div>
 
@@ -35,8 +34,7 @@
           </button>
           <button mat-raised-button *ngIf="!isFavourite" color="warn" (click)="addToFavourites()">Add to favourites
           </button>
-          <button mat-stroked-button *ngIf="isFavourite" color="warn" (click)="removeFromFavourites()">Remove from
-            favourites
+          <button mat-stroked-button *ngIf="isFavourite" color="warn" (click)="removeFromFavourites()">Remove from favourites
           </button>
         </div>
 
@@ -48,8 +46,8 @@
         <p>Form: {{book?.form}}</p>
         <p>Total Pages: {{book?.pages}}</p>
         <p>Publication Year: {{book?.year}}</p>
-        <p>Genres: <span *ngFor="let genre of book?.genres; let isLast=last"><span class="cursor-text"
-                                                                                   (click)="goToGenre(genre.id)">{{genre.genre}}{{isLast ? '' : ', '}}</span></span>
+        <p>Genres: <span *ngFor="let genre of book?.genres; let isLast=last"><span class="cursor-text" (click)="goToGenre(genre.id)">{{genre.genre}}{{isLast
+              ? '' : ', '}}</span></span>
         </p>
       </div>
 
@@ -77,9 +75,9 @@
               <h4>Authors</h4>
               <div dragScroll [drag-scroll-y-disabled]="true" style="height: 100%">
                 <div class="inline">
-              <span *ngFor="let author of book?.authors">
-                <img src={{author.photo}} class="author-photo" title={{author.name}} (click)="goToAuthor(author.id)"/>
-              </span>
+                  <span *ngFor="let author of book?.authors">
+                    <img src={{author.photo}} class="author-photo" title={{author.name}} (click)="goToAuthor(author.id)" />
+                  </span>
                 </div>
               </div>
             </div>
@@ -88,9 +86,9 @@
               <h4>Book Series: {{book?.serie.name}}</h4>
               <div dragScroll [drag-scroll-y-disabled]="true" style="height: 100%">
                 <div class="inline">
-              <span *ngFor="let b of book?.serie.books">
-                <img src={{b.cover}}  *ngIf="b.id !== id" class="author-photo" title={{b.name}} (click)="goToBook(b.id)" />
-              </span>
+                  <span *ngFor="let b of book?.serie.books">
+                    <img src={{b.cover}} *ngIf="b.id !== id" class="author-photo" title={{b.name}} (click)="goToBook(b.id)" />
+                  </span>
                 </div>
               </div>
             </div>
@@ -104,7 +102,9 @@
 
           <div class="book-reviews">
             <h3>Reviews</h3>
-            <button class="button-review" *ngIf="!userHasReview && logged" mat-raised-button (click)="writeReview = !writeReview">Write Review</button>
+            <button class="button-review" *ngIf="!userHasReview && logged" mat-raised-button (click)="writeReview = !writeReview">Write
+              Review
+            </button>
             <div class="fullw-margin" *ngIf="writeReview && logged && !userHasReview">
               <p-editor [(ngModel)]="text" [ngModelOptions]="{standalone: true}" [style]="{'height':'320px'}">
                 <p-header>
@@ -124,6 +124,16 @@
 
           </div>
 
+          <div>
+            <h4>Recommendations</h4>
+            <div>
+              <button class="button-review" *ngIf="logged && !userHasRec" mat-raised-button (click)="writeRec = !writeRec">Write
+                Recommendation
+              </button>
+              <app-recommendation-new [recommendedId]="book?.id" *ngIf="writeRec && !userHasRec" (recommendationWrited)="userHasRec = true"></app-recommendation-new>
+            </div>
+          </div>
+
 
         </div>
 
@@ -141,13 +151,11 @@
       </mat-tab>
       <mat-tab label="Stats"> Content 3</mat-tab>
       <mat-tab label="Recommendations">
-        <div>
         <div align="center" class="container-list">
           <div *ngFor="let rec of book?.recommendations | paginate: { itemsPerPage: 4, currentPage: o }">
             <app-recommendation-item [recommendation]="rec" [inUserComponent]="false"></app-recommendation-item>
           </div>
           <pagination-controls (pageChange)="o = $event"></pagination-controls>
-        </div>
         </div>
       </mat-tab>
     </mat-tab-group>
@@ -155,5 +163,4 @@
 
   </div>
 </div>
-<br>
-<div id="disqus_thread"></div>
+<!--<div id="disqus_thread"></div>-->

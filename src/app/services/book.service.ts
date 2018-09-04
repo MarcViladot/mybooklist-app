@@ -34,6 +34,15 @@ export class BookService {
     });
   }
 
+  getBooksInList(): Observable<any> {
+    return this.http.get<any>(this.url + 'list/user', {
+      headers: new HttpHeaders({
+        'Accept': 'application/json',
+        'Authorization': AuthenticationService.getAuthToken()
+      })
+    });
+  }
+
   getBooksByAuthor(id: number): Observable<any> {
     return this.http.get<any>(this.url + 'author/' + id, {
       headers: new HttpHeaders({

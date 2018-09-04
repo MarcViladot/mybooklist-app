@@ -4,12 +4,13 @@ import {BookService} from '../../../services/book.service';
 import {Book} from '../../../interfaces/book';
 import {AuthenticationService} from '../../../services/authentication.service';
 import {SigninComponent} from '../../user/signin/signin.component';
-import {MatDialog} from '@angular/material';
+import {MatDialog, MatSnackBar} from '@angular/material';
 import {ListService} from '../../../services/list.service';
 import {Added} from '../../../interfaces/added';
 import {AddListDialogComponent} from '../../list/add-list-dialog/add-list-dialog.component';
 import {EditListDialogComponent} from '../../list/edit-list-dialog/edit-list-dialog.component';
 import {ReviewService} from '../../../services/review.service';
+import {RecommendationService} from '../../../services/recommendation.service';
 
 @Component({
   selector: 'app-book-detail',
@@ -30,12 +31,17 @@ export class BookDetailComponent implements OnInit {
   text = '';
   writeReview = false;
 
+  writeRec = false;
+  userHasRec: boolean;
+
   constructor(private activatedRoute: ActivatedRoute,
               private bookService: BookService,
               private authService: AuthenticationService,
               private listService: ListService,
               private reviewService: ReviewService,
+              private recService: RecommendationService,
               public dialog: MatDialog,
+              public snackBar: MatSnackBar,
               private router: Router) {
     this.router.routeReuseStrategy.shouldReuseRoute = function () {
       return false;
@@ -60,14 +66,17 @@ export class BookDetailComponent implements OnInit {
       this.reviewService.getReviewByBoookAndUser(this.id).subscribe(
         res => this.userHasReview = res !== null
       );
+      this.recService.getByBookUser(this.id).subscribe(
+        res => this.userHasRec = res !== null
+      );
     }
     this.changeLogged(AuthenticationService.isLogged());
     this.getFavourite();
     this.getAdded();
-    this.initDisqus();
+    // this.initDisqus();
   }
 
-  initDisqus() {
+  /*initDisqus() {
     const disqus_config = function () {
       const self = this;
       this.page.url = self.router.url;
@@ -79,7 +88,7 @@ export class BookDetailComponent implements OnInit {
       s.setAttribute('data-timestamp', '' + new Date());
       (d.head || d.body).appendChild(s);
     })();
-  }
+  }*/
 
   postReview(): void {
     let score = 0;
@@ -94,6 +103,9 @@ export class BookDetailComponent implements OnInit {
     this.reviewService.postReview(data).subscribe(
       res => {
         this.userHasReview = true;
+        this.snackBar.open('Review posted', null, {
+          duration: 5000,
+        });
       }
     );
   }

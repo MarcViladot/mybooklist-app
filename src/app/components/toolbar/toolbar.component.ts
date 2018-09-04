@@ -35,7 +35,7 @@ export class ToolbarComponent implements OnInit {
   ngOnInit() {
     this.logged = AuthenticationService.isLogged();
     this.bookService.getAllBooks().subscribe(
-      response => this.options = response.books
+      books => this.options = books
     );
     this.filteredOptions = this.myControl.valueChanges
       .pipe(

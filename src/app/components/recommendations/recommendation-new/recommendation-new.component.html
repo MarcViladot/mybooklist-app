@@ -1,0 +1,31 @@
+<form [formGroup]="recForm" (ngSubmit)="postRecommendation()" class="container-column"
+      style="position: relative; border: 1px #000000">
+
+  <div class="row">
+
+    <mat-form-field class="full-width col-lg-10">
+      <mat-select placeholder="Similar Book" formControlName="similar">
+        <mat-option *ngFor="let book of books" [value]="book.id">
+          {{book.name}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <div class="col-lg-2">
+      <button mat-raised-button color="primary" type="submit" class="full-width" [disabled]="!recForm.valid">Add Rec
+      </button>
+    </div>
+  </div>
+
+  <p-editor [style]="{'height':'320px'}" formControlName="reasons">
+    <p-header>
+                  <span class="ql-formats">
+                    <button class="ql-bold" aria-label="Bold"></button>
+                    <button class="ql-italic" aria-label="Italic"></button>
+                    <button class="ql-underline" aria-label="Underline"></button>
+                  </span>
+    </p-header>
+  </p-editor>
+
+
+</form>
